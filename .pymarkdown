@@ -1,0 +1,8 @@
+{
+  "line-length" : 120,
+  "plugins": {
+    "md013" : {
+        "line_length" : 120
+    }
+  }
+}

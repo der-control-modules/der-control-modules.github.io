@@ -1,0 +1,3 @@
+mkdocs-material
+pre-commit
+git+https://github.com/jackdewinter/pymarkdown@main
