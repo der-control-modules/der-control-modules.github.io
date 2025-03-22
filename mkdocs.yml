@@ -8,6 +8,6 @@ theme:
 nav:
   - Home: index.md
   - Introduction: intro.md
-  - Controls: controls.md
+  - Controls: controls/index.md
   - OpenFMB: openfmb.md
   - About: about.md
