@@ -1,3 +1,13 @@
 site_name: GridAPPS-D Reference Site
 theme:
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
   name: material
+
+nav:
+  - Home: index.md
+  - Introduction: intro.md
+  - Controls: controls.md
+  - OpenFMB: openfmb.md
+  - About: about.md
