@@ -10,7 +10,9 @@ jobs:
     name: Deploy docs
     runs-on: ubuntu-latest
     permissions:
-      pages: write
+      contents: write      # Required to push changes to the repository
+      pages: write         # Required to deploy GitHub Pages
+      id-token: write      # Required for authentication with GitHub Pages
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
