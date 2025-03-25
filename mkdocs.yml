@@ -9,5 +9,6 @@ nav:
   - Home: index.md
   - Introduction: intro.md
   - Controls: controls/index.md
+  - Interoperability FrameWork: interoperability.md
   - OpenFMB: openfmb.md
   - About: about.md
