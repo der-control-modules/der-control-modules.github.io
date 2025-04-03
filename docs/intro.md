@@ -1,39 +1,11 @@
-# OpenFMB 
+# Introduction
 
-Message Bus is a critical middleware component in the distributed systems architecture on various systems and environments. Open Field Message Bus (open FMB) is an extensive framework for robust communication between the microgrid controller and assets on the communication layer. OpenFMB was developed to reduce the complexities of microgrid communication, such as low standards with the data structure combined with the communication protocols towards the grid utilities. For instance, open FMB can be used to translate traditional protocols, including Modbus and DNP3 and NATS. 
+Behind-the-meter battery energy storage systems (BESS) support grid stability by enhancing flexibility and adding new services to the electrical system. However, the integration of BESS requires advanced communication standards of BESS increase integration complexity, leading to interoperability issues that delay seamless deployment. The work aims to create an open-source interoperable communication and control framework for BESS using Eclipse VOLTTRON. This framework provides a protocol-agnostic interface for BESS by mapping the data models of IEC 61850-420 to protocols according to IEEE 1547 standards. In addition, controls are developed based on existing MESA modes and a two-stage control framework that includes scheduling and real-time control mechanisms to provide grid services. The communication and control framework has been tested on a real system for energy arbitrage, demand charge reduction and MESA charge/ discharge modes, 125kW/250kWh BESS and a building with a 150kW peak load.
 
-## Architecture 
+# Background
 
-Message buses provide asynchronous communication that performs message transfer between the senders and receivers without a need for immediate response from the receivers as soon the sender sends the message. The components in the message bus are independent which supports scalability and system resilience. Generally, message bus works based on the publisher and subscriber. Open FMB is designed for three different layers, application, adapter and interface layers. The architechture is shown in the below figure.
+A behind-the-meter (BTM) battery energy storage system (BESS) improves energy efficiency, reduces electricity costs, and improves the reliability of the grid. BESS can provide critical services like frequency regulation and voltage control, helping maintain grid stability and prevent blackouts. As more distributed and intermittent energy sources, such as photovoltaic (PV) and wind power, along with bidirectional components like electric vehicles (EVs), are integrated into the grid, the role of BESS is expanding. Advanced control and optimization algorithms are driving research into BESS management. For example, the financial advantages of peak shaving and energy arbitrage for BTM BESS under demand charge tariffs, while other works examined BESS integration to mitigate the short-term variability of renewable energy, further evaluated various energy storage technologies for grid services. 
 
-![alt text](image.png)
-*Figure: OpenFMB Architecture*
-
-
-
-# Open-FMB Based Grid
-
-The **Open-FMB Based Grid** is designed to enhance flexibility, interoperability, and efficiency in energy management systems.
-
-## Key Features:
-
-![alt text](image-1.png)
-*Figure: OpenFMB Key Features and Properties*
-
-1. **Distributed and Decentralized Architecture**: The Open-FMB framework is built upon a distributed and decentralized architecture, promoting localized decision-making and minimizing reliance on centralized control systems. This structure allows for enhanced adaptability and rapid response to changing conditions in the energy landscape.
-
-2. **Event-Driven Communication**: The communication model is event-driven, utilizing a **publish-subscribe** mechanism that facilitates asynchronous message exchanges. This model allows devices to send and receive updates efficiently, ensuring real-time responsiveness.
-
-3. **Interoperability**: The framework emphasizes **interoperability** among diverse devices and systems by leveraging **open standards** such as DDS (Data Distribution Service) and MQTT (Message Queuing Telemetry Transport). This ensures that equipment from various manufacturers can work together seamlessly.
-
-4. **Scalability**: Open-FMB is designed for **high scalability**, allowing the system to grow and adapt without compromising performance. This is crucial in accommodating the increasing number of edge devices and data sources as the energy grid evolves.
-
-5. **Reliability and Peer-to-Peer Resilience**: With a focus on **reliability**, the Open-FMB architecture provides mechanisms for **secure messaging** between devices. The peer-to-peer structure enhances resilience, allowing for uninterrupted communication even if individual components fail.
-
-6. **Support for Edge Devices**: The architecture supports a wide range of **edge devices**, facilitating the integration of sensors, controllers, and other local elements that can actively participate in energy management and monitoring.
-
-7. **Distributed Decision Making**: By enabling **distributed decision-making**, the Open-FMB Grid supports more efficient and localized responses to grid conditions, allowing for quicker adjustments based on real-time data.
-
-
+Interoperability ensures that various energy storage systems from different manufacturers can communicate and coordinate charging/discharging activities efficiently. Several communication protocols and standards have been developed to address Sunspc Modbus, Distributed Network Protocol 3 (DNP3) and global standards like IEC 61850 for power utility operation. IEEE 2030.5 supports communication in smart grids for energy resources like BESS, while IEEE 1547 establishes standards for interconnection and interoperability with the grid, addressing voltage regulation, frequency response, anti-islanding protection and grid support functions. Successful BESS demonstration projects require seamless integration with other devices highlighting the need for standardized communication protocols to address interoperability challenges. 
 
 
