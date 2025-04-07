@@ -5,10 +5,14 @@ theme:
     - navigation.instant.prefetch
   name: material
 
+plugins:
+  - caption
+
 nav:
   - Home: index.md
   - Introduction: intro.md
-  - Controls: controls/index.md
-  - Interoperability FrameWork: interoperability.md
+#  - Controls: controls/index.md
+  - Agents:
+    - Interoperability Agent: interoperability.md
+    - Real-Time Control Agent: rt-control.md
   - OpenFMB: openfmb.md
-  - About: about.md
