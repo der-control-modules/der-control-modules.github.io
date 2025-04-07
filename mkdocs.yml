@@ -16,3 +16,4 @@ nav:
     - Interoperability Agent: interoperability.md
     - Real-Time Control Agent: rt-control.md
   - OpenFMB: openfmb.md
+  - Test Cases: test-cases.md

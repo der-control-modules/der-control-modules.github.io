@@ -5,11 +5,9 @@ new services to the electrical system. However, the integration of BESS requires
 of BESS increase integration complexity, leading to interoperability issues that delay seamless deployment.
 The work aims to create an open-source interoperable communication and control framework for BESS using
 Eclipse VOLTTRON. This framework provides a protocol-agnostic interface for BESS by mapping the data models
-of IEC 61850-420 to protocols according to IEEE 1547 standards. In addition, controls are developed based on
+of IEC 61850-420-7 to protocols according to IEEE 1547 standards. In addition, controls are developed based on
 existing MESA modes and a two-stage control framework that includes scheduling and real-time control mechanisms
-to provide grid services. The communication and control framework has been tested on a real system for
-energy arbitrage, demand charge reduction and MESA charge/ discharge modes, 125kW/250kWh BESS and a building
-with a 150kW peak load.
+to provide grid services. 
 
 # Background
 
