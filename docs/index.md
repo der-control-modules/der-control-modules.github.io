@@ -1,17 +1,33 @@
-# Welcome to MkDocs
+# Introduction
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Behind-the-meter battery energy storage systems (BESS) support grid stability by enhancing flexibility and adding
+new services to the electrical system. However, the integration of BESS requires advanced communication standards
+of BESS increase integration complexity, leading to interoperability issues that delay seamless deployment.
+The work aims to create an open-source interoperable communication and control framework for BESS using
+Eclipse VOLTTRON. This framework provides a protocol-agnostic interface for BESS by mapping the data models
+of IEC 61850-420-7 to protocols according to IEEE 1547 standards. In addition, controls are developed based on
+existing MESA modes and a two-stage control framework that includes scheduling and real-time control mechanisms
+to provide grid services. 
 
-## Commands
+# Background
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+A behind-the-meter (BTM) battery energy storage system (BESS) improves energy efficiency, reduces electricity costs,
+and improves the reliability of the grid. BESS can provide critical services like frequency regulation
+and voltage control, helping maintain grid stability and prevent blackouts. As more distributed and intermittent
+energy sources, such as photovoltaic (PV) and wind power, along with bidirectional components like electric
+vehicles (EVs), are integrated into the grid, the role of BESS is expanding. Advanced control and optimization
+algorithms are driving research into BESS management. For example, the financial advantages of peak shaving
+and energy arbitrage for BTM BESS under demand charge tariffs, while other works examined BESS integration to
+mitigate the short-term variability of renewable energy, further evaluated various energy storage technologies
+for grid services. 
 
-## Project layout
+Interoperability ensures that various energy storage systems from different manufacturers can communicate
+and coordinate charging/discharging activities efficiently. Several communication protocols and standards
+have been developed to address Sunspc Modbus, Distributed Network Protocol 3 (DNP3) and global standards like
+IEC 61850 for power utility operation. IEEE 2030.5 supports communication in smart grids for energy resources
+like BESS, while IEEE 1547 establishes standards for interconnection and interoperability with the grid,
+addressing voltage regulation, frequency response, anti-islanding protection and grid support functions.
+Successful BESS demonstration projects require seamless integration with other devices highlighting the need
+for standardized communication protocols to address interoperability challenges. 
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+

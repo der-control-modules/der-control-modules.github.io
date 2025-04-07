@@ -1,24 +1,38 @@
 # OpenFMB 
 
-Message Bus is a critical middleware component in the distributed systems architecture on various systems and environments. Open Field Message Bus (open FMB) is an extensive framework for robust communication between the microgrid controller and assets on the communication layer. OpenFMB was developed to reduce the complexities of microgrid communication, such as low standards with the data structure combined with the communication protocols towards the grid utilities. For instance, open FMB can be used to translate traditional protocols, including Modbus and DNP3 and NATS. 
+Message Bus is a critical middleware component in the distributed systems architecture on various systems
+and environments. Open Field Message Bus (open FMB) is an extensive framework for robust communication between
+the microgrid controller and assets on the communication layer. OpenFMB was developed to reduce the complexities
+of microgrid communication, such as low standards with the data structure combined with the communication protocols
+towards the grid utilities. For instance, open FMB can be used to translate traditional protocols, including Modbus
+and DNP3 and NATS. 
 
 ## Architecture 
 
-Message buses provide asynchronous communication that performs message transfer between the senders and receivers without a need for immediate response from the receivers as soon the sender sends the message. The components in the message bus are independent which supports scalability and system resilience. Generally, message bus works based on the publisher and subscriber. Open FMB is designed for three different layers, application, adapter and interface layers. The architechture is shown in the below figure.
+Message buses provide asynchronous communication that performs message transfer between the senders and receivers
+without a need for immediate response from the receivers as soon the sender sends the message. The components in
+the message bus are independent which supports scalability and system resilience. Generally, message bus works based
+on the publisher and subscriber. Open FMB is designed for three different layers, application, adapter and interface
+layers. The architechture is shown in [](#openfmb-architecture).
 
-![alt text](image.png)
-*Figure: OpenFMB Architecture*
+Figure: OpenFMB Architecture {#openfmb-architecture}
+
+![](images/openfmb-architecture-layers.png)
 
 
 
-# Open-FMB Based Grid
 
-The **Open-FMB Based Grid** is designed to enhance flexibility, interoperability, and efficiency in energy management systems.
+## Open-FMB Based Grid
 
-## Key Features:
+The **Open-FMB Based Grid** is designed to enhance flexibility, interoperability, and efficiency in energy 
+management systems.
 
-![alt text](image-1.png)
-*Figure: OpenFMB Key Features and Properties*
+Figure: OpenFMB Key Features and Properties {#openfmb-features}
+
+![](images/openfmb-features.png)
+
+**Key Features:**
+
 
 1. **Distributed and Decentralized Architecture**: The Open-FMB framework is built upon a distributed and decentralized architecture, promoting localized decision-making and minimizing reliance on centralized control systems. This structure allows for enhanced adaptability and rapid response to changing conditions in the energy landscape.
 
