@@ -1,34 +1,35 @@
-# The Interoperability Framework 
+# Introduction
 
-The Interoperability Framework, as shown in [](#interop-framework-agents-diagram) and described in
-[](#interop-framework-agents-table), provides a set of VOLTTRON agents which
-work together to enable seamless integration, control, and optimization of energy storage systems within a grid
-environment, improving operational efficiency and grid stability. All agents communicate via VOLTTRON's message bus,
-with the data flowing through the bus being stored in a database.
-Visualization of the data is achieved through Grafana. Grafana is an open-source platform for monitoring,
-visualizing, and analyzing metrics and log data from the various agents.
+Behind-the-meter battery energy storage systems (BESS) support grid stability by enhancing flexibility and adding
+new services to the electrical system. However, the integration of BESS requires advanced communication standards
+of BESS increase integration complexity, leading to interoperability issues that delay seamless deployment.
+The work aims to create an open-source interoperable communication and control framework for BESS using
+Eclipse VOLTTRON. This framework provides a protocol-agnostic interface for BESS by mapping the data models
+of IEC 61850-420 to protocols according to IEEE 1547 standards. In addition, controls are developed based on
+existing MESA modes and a two-stage control framework that includes scheduling and real-time control mechanisms
+to provide grid services. The communication and control framework has been tested on a real system for
+energy arbitrage, demand charge reduction and MESA charge/ discharge modes, 125kW/250kWh BESS and a building
+with a 150kW peak load.
 
-Figure: A suite of open-source VOLTTRON agents for an interoperable framework.
-{#interop-framework-agents-diagram}
+# Background
 
-![](images/interop-framework-agents.png)
+A behind-the-meter (BTM) battery energy storage system (BESS) improves energy efficiency, reduces electricity costs,
+and improves the reliability of the grid. BESS can provide critical services like frequency regulation
+and voltage control, helping maintain grid stability and prevent blackouts. As more distributed and intermittent
+energy sources, such as photovoltaic (PV) and wind power, along with bidirectional components like electric
+vehicles (EVs), are integrated into the grid, the role of BESS is expanding. Advanced control and optimization
+algorithms are driving research into BESS management. For example, the financial advantages of peak shaving
+and energy arbitrage for BTM BESS under demand charge tariffs, while other works examined BESS integration to
+mitigate the short-term variability of renewable energy, further evaluated various energy storage technologies
+for grid services. 
 
-Table: Descriptions of interoperability agents. {#interop-framework-agents-table}
-
-| Agent Name                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**Interoperability Agent**](interoperability.md) | Maps IEC 61850-7-420 data models into a common format, aligning them with the correct point names in protocols based on the IEEE 1547 standard. Supports communication standards such as SunSpec Modbus, IEEE 1815.2, and IEEE 2030.5. Ensures that devices with varying communication protocols can integrate seamlessly into a grid environment, improving device interoperability across multiple platforms.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| **Scheduler Agent**                               | Responsible for scheduling energy storage and grid operations using forecasted demand, generation, and pricing data. Integrates an optimization-based scheduler while remaining modular to support additional algorithmic approaches, ensuring efficient energy storage and usage based on real-time grid needs and energy price variations.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| [**Real-Time Control (RT) Agent**](rt-control.md) | Actuates controls on energy storage systems. Designed for adaptability and efficiency in controlling grid operations in real-time. User-defined novel algorithms can be implemented in Python or Julia. Several pre-defined control algorithms are provided, including several MESA modes: <br><br> - **Charge/Discharge Power**: Operates based on a set schedule or specific set point. <br> - **Active Power Response**: Controls peak limiting, load following, and generation following. <br> - **Automatic Generation Control (AGC)**: Follows utility signals to balance power supply and demand. <br> - **Active Power Limit**: Restricts the maximum and minimum power output levels. <br> - **Active Power Smoothing**: Provides moving average control for smoothing power output. <br> - **Frequency Watt Modes**: Frequency-Watt Modes include Vertex and Gradient modes, advanced strategies for managing power output based on grid frequency deviations. Vertex Mode utilizes a piecewise linear control curve, while Gradient Mode uses a continuous, proportional response to stabilize the grid smoothly. |
-| **Grid Information Agent**                        | Provides real-time and day-ahead data on CO₂ intensity, energy generation breakdown, and pricing information. Configurable to handle TOU pricing data for adjusting grid operations in response to market fluctuations.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| **Forecaster Agent**                              | Utilizes historical data from the VOLTTRON historian agent and a load forecast model to predict future energy load and outdoor temperature conditions. Helps utilities anticipate grid needs and optimize the scheduling and operation of energy storage systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-
-
-For more information and experimentation results, read the article:
-[Interoperable Energy Storage Control and Communication Framework Development](
-https://ieeexplore.ieee.org/abstract/document/10891219)
-
-
-
+Interoperability ensures that various energy storage systems from different manufacturers can communicate
+and coordinate charging/discharging activities efficiently. Several communication protocols and standards
+have been developed to address Sunspc Modbus, Distributed Network Protocol 3 (DNP3) and global standards like
+IEC 61850 for power utility operation. IEEE 2030.5 supports communication in smart grids for energy resources
+like BESS, while IEEE 1547 establishes standards for interconnection and interoperability with the grid,
+addressing voltage regulation, frequency response, anti-islanding protection and grid support functions.
+Successful BESS demonstration projects require seamless integration with other devices highlighting the need
+for standardized communication protocols to address interoperability challenges. 
 
 

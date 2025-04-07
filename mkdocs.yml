@@ -10,7 +10,7 @@ plugins:
 
 nav:
   - Home: index.md
-  - Introduction: intro.md
+  - Interoperability Framework: interoperability-framework.md
 #  - Controls: controls/index.md
   - Agents:
     - Interoperability Agent: interoperability.md
