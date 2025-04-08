@@ -5,7 +5,7 @@ new services to the electrical system. However, the integration of ESS requires 
 of ESS increase integration complexity, leading to interoperability issues that delay seamless deployment.
 The work aims to create an open-source interoperable communication and control framework for ESS using
 Eclipse VOLTTRON. This framework provides a protocol-agnostic interface for ESS by mapping the data models
-of IEC 61850-420-7 to protocols according to IEEE 1547 standards. In addition, controls are developed based on
+of IEC 61850-7-420 to protocols according to IEEE 1547 standards. In addition, controls are developed based on
 existing MESA modes and a two-stage control framework that includes scheduling and real-time control mechanisms
 to provide grid services. 
 
