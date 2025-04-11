@@ -15,5 +15,6 @@ nav:
   - Agents:
     - Interoperability Agent: interoperability.md
     - Real-Time Control Agent: rt-control.md
+    - Scheduler: scheduler.md
   - OpenFMB: openfmb.md
   - Test Cases: test-cases.md
