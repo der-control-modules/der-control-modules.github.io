@@ -18,3 +18,4 @@ nav:
     - Scheduler: scheduler.md
   - OpenFMB: openfmb.md
   - Test Cases: test-cases.md
+  - User Guide: user_guide.md
