@@ -5,11 +5,6 @@ with a 150kW peak load. Tests involving energy arbitrage, demand charge reductio
 are further discussed in
 [Interoperable Energy Storage Control and Communication Framework Development](https://ieeexplore.ieee.org/document/10891219).
 
-Figure: Output from the Grid Information and Forecaster agents, showing day-ahead CO2 intensity, generation breakdown, price data, TOU configuration, outdoor temperature, and load forecasts.
-
-![alt text](co2.jpg)
-
-
 
 # Experimentation Results with VOLTTRON 
 
