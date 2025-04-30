@@ -11,8 +11,8 @@ to provide grid services.
 
 # Background
 
-A behind-the-meter (BTM) battery energy storage system (ESS) improves energy efficiency, reduces electricity costs,
-and improves the reliability of the grid. ESS can provide critical services like frequency regulation
+ESS improves energy efficiency, reduces electricity costs,
+and improves the reliability of the grid. It can provide critical services like frequency regulation
 and voltage control, helping maintain grid stability and prevent blackouts. As more distributed and intermittent
 energy sources, such as photovoltaic (PV) and wind power, along with bidirectional components like electric
 vehicles (EVs), are integrated into the grid, the role of ESS is expanding. Advanced control and optimization
