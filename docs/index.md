@@ -1,13 +1,14 @@
 # Introduction
 
-Energy storage systems (ESS) support grid stability by enhancing flexibility and adding
-new services to the electrical system. However, the integration of ESS requires advanced communication standards
-of ESS increase integration complexity, leading to interoperability issues that delay seamless deployment.
-The work aims to create an open-source interoperable communication and control framework for ESS using
-Eclipse VOLTTRON. This framework provides a protocol-agnostic interface for ESS by mapping the data models
+Energy storage systems (ESS) is the most capable resource, supporting grid stability, enhancing flexibility, and adding
+new services to the electrical system. However, the integration of ESS can be challenging and costly due to evolving communication standards
+and operating modes. In order to reduce integration complexity and avoid interoperability issues that delay seamless deployment,
+this work provides an open-source interoperable communication and control framework for ESS. 
+This framework provides a protocol-agnostic interface for ESS by mapping the data models
 of IEC 61850-7-420 to protocols according to IEEE 1547 standards. In addition, controls are developed based on
-existing MESA modes and a two-stage control framework that includes scheduling and real-time control mechanisms
-to provide grid services. 
+existing MESA modes and a control framework that includes scheduling and real-time control mechanisms
+to provide grid services. This framework streamlines the integration of ESS by translating communication standards, 
+providing examples of complex control modes, and therefore reducing complexity, risk, and cost associated with full utilization of ESS capabilities across diverse vendors. 
 
 # Background
 
