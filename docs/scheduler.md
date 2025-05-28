@@ -1,5 +1,7 @@
 # Scheduler Agent
 
+[Code & Installation Instructions](https://github.com/der-control-modules/scheduler){ .md-button }
+
 The scheduler agent plays a vital role within the VOLTTRON agents’ framework, facilitating efficient energy management and ensuring seamless integration with other service agents. The agent is primarily responsible for scheduling energy storage and grid operations by leveraging forecasted data on demand generation and pricing. It is supported by a modular architecture allowing for incorporating various algorithmic approaches to optimize energy scheduling efficiently. 
 
 

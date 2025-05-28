@@ -5,7 +5,12 @@ and environments. Open Field Message Bus (open FMB) is an extensive framework fo
 the microgrid controller and assets on the communication layer. OpenFMB was developed to reduce the complexities
 of microgrid communication, such as low standards with the data structure combined with the communication protocols
 towards the grid utilities. For instance, open FMB can be used to translate traditional protocols, including Modbus
-and DNP3 and NATS. 
+and DNP3 and NATS.
+
+To facilitate integration of OpenFMB systems with the agents of this interoperability framework, capabilities are
+currently being added to VOLTTRON to facilitate interaction with OpenFMB aware devices.  These capabilities will
+include message bus adapters to enable communication with common OpenFMB message buses, such as MQTT, and facilities
+for passing and interacting with data objects encoded using protocol buffers from within VOLTTRON agents.
 
 ## Architecture 
 

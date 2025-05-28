@@ -31,3 +31,15 @@ Successful ESS demonstration projects require seamless integration with other de
 for standardized communication protocols to address interoperability challenges. 
 
 # User Guide
+
+The agents described on this site comprise an interoperability framework to provide integration, control,
+and optimization of energy storage systems within a grid environment. This framework is described on
+[The Interoperability Framework](/interoperability-framework) page:
+
+Each agent is additionally described on its own page, as follows:
+
+* [Interoperability Agent](/interoperability)
+* [Real-time Control](/rt-control)
+* [Scheduler](/scheduler)
+
+Links to code and installation instructions can be found at the top of each agent page.

@@ -1,5 +1,7 @@
 # Real-Time Control Agent
 
+[Code & Installation Instructions](https://github.com/der-control-modules/realtime-control-agent){ .md-button }
+
 The Real-Time (RT) Control Agent provides a framework for actuating one or more control algorithms
 on an energy storage system. The RTControl framework involves the use of three abstract class types:
 EnergyStorageSystem, ControlMode, and UseCase.

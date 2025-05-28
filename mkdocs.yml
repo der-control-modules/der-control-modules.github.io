@@ -8,6 +8,9 @@ theme:
 plugins:
   - caption
 
+markdown_extensions:
+  - attr_list
+
 nav:
   - Home: index.md
   - Interoperability Framework: interoperability-framework.md
