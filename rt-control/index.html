@@ -1,0 +1,678 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../interoperability/">
+      
+      
+        <link rel="next" href="../scheduler/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Real-Time Control Agent - DER Control Modules Site</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#real-time-control-agent" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DER Control Modules Site" class="md-header__button md-logo" aria-label="DER Control Modules Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DER Control Modules Site
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Real-Time Control Agent
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DER Control Modules Site" class="md-nav__button md-logo" aria-label="DER Control Modules Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DER Control Modules Site
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperability-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interoperability Framework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Agents
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Agents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interoperability Agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Real-Time Control Agent
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-Time Control Agent
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#energystoragesystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnergyStorageSystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usecase" class="md-nav__link">
+    <span class="md-ellipsis">
+      UseCase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scheduler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openfmb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenFMB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Cases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#energystoragesystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnergyStorageSystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usecase" class="md-nav__link">
+    <span class="md-ellipsis">
+      UseCase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="real-time-control-agent">Real-Time Control Agent</h1>
+<p><a class="md-button" href="https://github.com/der-control-modules/realtime-control-agent">Code &amp; Installation Instructions</a></p>
+<p>The Real-Time (RT) Control Agent provides a framework for actuating one or more control algorithms
+on an energy storage system. The RTControl framework involves the use of three abstract class types:
+EnergyStorageSystem, ControlMode, and UseCase.</p>
+<p>For each class there are several built-in subclasses, but user defined classes may also be configured and used.     </p>
+<h3 id="energystoragesystem">EnergyStorageSystem</h3>
+<p>ESS classes abstract an energy storage system into a standard interface for use by control modes.
+The base class allows configuration of points on which state of charge and power
+can be monitored and (in the case of power) commanded. 
+Currently two built-in ESS classes are shown in <a href="#storage-systems">Table 1</a></p>
+<table id="storage-systems">
+<caption style="caption-side:bottom">Table 1: Energy Storage Systems Implemented in the Real-Time Control Agent </caption><thead>
+<tr>
+<th>Storage System</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FakeESS</td>
+<td>Intended only for testing, commands sent to the FakeESS update in memory representations of the state of charge and power.</td>
+</tr>
+<tr>
+<td>SebBESS</td>
+<td>This class is designed to communicate with a simple battery system which has a single control point in Watts. Other storage systems with a similar interface may be configured using the same class, or it may be used as a model for writing a custom class to command a system with a different control structure.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usecase">UseCase</h3>
+<p>UseCases are information services intended to collect data necessary to actualize some goal with the storage system.
+The UseCase ingests data from elsewhere in the VOLTTRON ecosystem, performs any necessary model calculations or
+transformations, and makes it available to control modes through properties. Eight built-in Use Cases are available,
+as shown in <a href="#use-cases">Table 2</a> (It should be noted that some modelled values are provided only as stubs.
+These may be implemented by users who subclass these with their own model.)</p>
+<table id="use-cases">
+<caption style="caption-side:bottom">Table 2: Use Cases Implemented in the Real-Time Control Agent </caption><thead>
+<tr>
+<th>Use Case</th>
+<th>Description</th>
+<th>Inputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Energy Arbitrage</td>
+<td>Energy arbitrage refers to the operation of energy storage that discharges when the electricity prices are high and charges when the prices are low. Since this type of energy storage operation reduces the net system load during peak hours and increases the load during off-peak hours, it is also often referred to as load leveling or load shifting. Energy arbitrage can be performed in both a vertically integrated system and in wholesale electricity markets. The economic reward is the price or cost differential between charging and discharging electrical energy minus the cost of losses during the full charging/discharging cycle.</td>
+<td>• actual_price<br>• forecast_price (stub)</td>
+</tr>
+<tr>
+<td>Frequency Response</td>
+<td>The ESS is configured to independently respond to excursions from nominal frequency by altering its power output or input. The parameters by which the control will be actuated are set using vertices or gradients in a Frequency-Watt curve.</td>
+<td>• metered_frequency</td>
+</tr>
+<tr>
+<td>Generation Following</td>
+<td>Generation is fully or partially countered by using the ESS to absorb energy (charging) when metered generation rises beyond a configured threshold. This may be used to prevent export to the grid or as a mechanism for charging the ESS when local generation is high.</td>
+<td>• forecast_power (stub)<br> • realtime_power</td>
+</tr>
+<tr>
+<td>Load Following</td>
+<td>Load is fully or partially countered by discharging the ESS when metered load rises above some threshold.</td>
+<td>• forecast_power (stub)<br>• realtime_power</td>
+</tr>
+<tr>
+<td>Peak Limiting</td>
+<td>Metered load, beyond some configured threshold, is fully countered by discharing the ESS until load drops below this threshold again. This can be used as a mechanism to avoid capacity charges.</td>
+<td>• realtime_power</td>
+</tr>
+<tr>
+<td>Regulation</td>
+<td>The electric power system must maintain a near-real-time balance between generation and load. Balancing generation and load instantaneously and continuously is difficult because loads and generation are constantly fluctuating. Frequency regulation, also known as automatic frequency restoration reserve (aFRR) in continental Europe, are required to continuously balance generation and load under normal operating conditions. Traditionally, the majority of frequency regulation capability has been provided by specially equipped generators. As technologies evolve, new types of flexibility resources emerge, such as ESSs.</td>
+<td>• agc_signal<br>• price (stub)<br>• performance_score (stub)</td>
+</tr>
+<tr>
+<td>Variability Mitigation</td>
+<td>A power smoothing algorithm reduces power fluctuations from renewable energy sources or volatile loads. It manages energy storage systems to store excess power during high generation or low demand, and release stored power during low generation or high demand. It employs real-time monitoring and control systems to adjust power in response to changing conditions. The algorithm enhances stability and reliability of renewable energy integration and optimizes energy storage utilization. Variability (a.k.a. ramp-rate, volatility, or intermittency) is defined as an instantaneous change in a load or source power, e.g., rapid changes in solar output power due to an intermittent cloud cover.</td>
+<td>• forecast_power (stub)<br>• metered_power</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mode">Mode</h3>
+<p>Control Modes contain the implementation of an algorithm for actuating the storage system.
+These may, optionally, ingest data from UseCases. They control the storage hardware through
+the interface of EnergyStorageSystem classes. Built-in control modes are described in <a href="#control-modes">Table 3</a></p>
+<table id="control-modes">
+<caption style="caption-side:bottom">Table 3: Control Modes Implemented in the Real-Time Control Agent </caption><thead>
+<tr>
+<th>Control Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active Power Limit</td>
+<td>Implements the MESA Active Power Limiting Mode, which disallows power commands outside of specified values.  This is used along with other control modes to constrain their output commands.</td>
+</tr>
+<tr>
+<td>Active Power Response</td>
+<td>Implements the MESA Active Power Response Modes. This mode may be configured to provide Generation Following, Load Following, or Peak Limiting, depending on the Use Case with which it is paired.</td>
+</tr>
+<tr>
+<td>Active Power Smoothing</td>
+<td>Implements the MESA Active Power Smoothing Mode. This actuates the storage using a moving average filter applied to the measured output of a variable resource (e.g., the production meter on a photovoltaic array).</td>
+</tr>
+<tr>
+<td>AGC</td>
+<td>Implements the MESA AGC Mode. This follows an AGC command signal.</td>
+</tr>
+<tr>
+<td>Adaptive Moving Average Control</td>
+<td>Similar to the Active Power Smoothing mode, but using an algorithm which self-optimizes the window of the moving average filter by using a longer window (more aggressive smoothing) when variability is high and a shorter window (which will utiilize less of the storage resource)when variability is low.</td>
+</tr>
+<tr>
+<td>Charge/Discharge Storage</td>
+<td>Implements the MESA Charge/Discharge Storage Mode. The battery is actuated using an ingested schedule or a pre-configured value.</td>
+</tr>
+<tr>
+<td>Frequency-Watt</td>
+<td>Implements the MESA Frequency-Watt Mode. This utilizes a configured curve to adjust power in response to a measured frequency signal, with the goal of supporting the nominal grid frequency.</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>Uses a PID loop to attempt to maintain power targets in response to changes in load or generation.</td>
+</tr>
+<tr>
+<td>Rule Based</td>
+<td>The rule based control is organized around developing rules to modify the battery set point from the day-ahead planning in real time.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
