@@ -14,9 +14,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Interoperability Framework: interoperability-framework.md
-#  - Controls: controls/index.md
-  - Agents:
     - Interoperability Agent: interoperability.md
+  - Controls: controls/index.md
     - Real-Time Control Agent: rt-control.md
     - Scheduler: scheduler.md
   - OpenFMB: openfmb.md
