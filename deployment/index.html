@@ -1318,8 +1318,10 @@ pip install git+https://github.com/der-control-modules/lib-protocol-proxy-mqtt  
 pip install git+https://github.com/der-control-modules/message-bus-adapter
 </code></pre>
 <h3 id="interoperability-service">Interoperability Service</h3>
-<p>Write the mappings and transforms for your devices to <code>$VOLTTRON_HOME/configs/interoperability.json</code> (see the
-<a href="../interoperability-service/#configuration">configuration example</a>), then start the service:</p>
+<p>Write the mappings for your devices to <code>$VOLTTRON_HOME/configs/interoperability.json</code> (see the
+<a href="../interoperability-service/#configuration">configuration example</a>). Transforms between IEC 61850-7-420,
+IEEE 1815.2, and SunSpec are <a href="../interoperability-service/#bundled-transforms">bundled with the service</a> and loaded
+automatically, so <code>transforms</code> only needs entries for site-specific formats. Then start the service:</p>
 <pre><code class="language-shell">interoperability-service --identity platform.presentation --host 127.0.0.1 --port 8000 \
     --config $VOLTTRON_HOME/configs/interoperability.json
 </code></pre>

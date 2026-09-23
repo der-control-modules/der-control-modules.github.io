@@ -1061,7 +1061,9 @@ adapters while continuing to talk directly to devices through drivers:</p>
 <li><strong>Device drivers</strong> enable direct point-to-point communication with controllers and DER devices over Modbus, DNP3,
   and HTTP (IEEE 2030.5).</li>
 <li><strong>Identifier mapping and data-model transformations</strong>, provided by the mapping and transform registries of the
-  Interoperability Service, enable communication across all supported protocols.</li>
+  Interoperability Service, enable communication across all supported protocols. The service also includes
+  <a href="../interoperability-service/#openfmb-data-models">pydantic models of the OpenFMB modules</a> (ESS, solar, meter,
+  breaker, switch, and others) with profile builders for constructing complete OpenFMB profiles.</li>
 <li>Both <strong>publish/subscribe</strong> and <strong>direct device communication</strong> are supported.</li>
 </ul>
 <p><figure id="openfmb-integration"><img alt="" src="../images/openfmb-integration.png"><figcaption>Figure 3: OpenFMB integration. Message bus adapters (MQTT, NATS) connect the Interoperability Service to an external OpenFMB bus, while device drivers provide direct access to SunSpec, MESA, and IEEE 2030.5 devices. </figcaption></figure></p>
