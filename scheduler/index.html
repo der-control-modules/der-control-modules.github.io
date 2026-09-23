@@ -15,8 +15,11 @@
         <link rel="next" href="../openfmb/">
       
       
+        
+      
+      
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -24,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -47,7 +50,6 @@
     
       
 
-    
     
     
   </head>
@@ -159,9 +161,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -192,9 +199,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Interoperability Framework
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -203,7 +215,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Interoperability Framework
+            
+  
+    Interoperability Framework
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -219,9 +235,42 @@
   
   
   <span class="md-ellipsis">
-    The Interoperability Framework
+    
+  
+    Overview
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperability-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Service
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -242,9 +291,14 @@
   
   
   <span class="md-ellipsis">
-    Interoperability Agent
+    
+  
+    Interoperability Agent (Deprecated)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -285,9 +339,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Controls
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -296,32 +355,13 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Controls
+            
+  
+    Controls
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../controls/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -335,9 +375,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Real-Time Control Agent
+  
+
     
   </span>
+  
   
 
       </a>
@@ -367,9 +412,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Scheduler
+  
+
     
   </span>
+  
   
 
       </a>
@@ -398,9 +448,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     OpenFMB
+  
+
     
   </span>
+  
   
 
       </a>
@@ -420,9 +475,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Test Cases
+  
+
     
   </span>
+  
   
 
       </a>
@@ -458,6 +518,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -466,8 +527,8 @@
 
 <h1 id="scheduler-agent">Scheduler Agent</h1>
 <p><a class="md-button" href="https://github.com/der-control-modules/scheduler">Code &amp; Installation Instructions</a></p>
-<p>The scheduler agent plays a vital role within the VOLTTRON agents’ framework, facilitating efficient energy management and ensuring seamless integration with other service agents. The agent is primarily responsible for scheduling energy storage and grid operations by leveraging forecasted data on demand generation and pricing. It is supported by a modular architecture allowing for incorporating various algorithmic approaches to optimize energy scheduling efficiently. </p>
-<p>The scheduler agent operates by interactive with multiple system components, such as Photovoltaic (PV) systems and Energy Storage System (ESS) through the SunSpec Modbus protocol to ensure smooth communication and interoperability. This flexibility and adherence to standardized communication protocols help align operations and maintain consistency across the energy network. Furthermore, the scheduler agent interfaces with the DER interoperability agent, real-time control agent, and grid information agent. It utilizes the common format provided by these agents, which is converted by the interoperability agent into a standardized format. This setup ensures that data models initially expressed in diverse native formats such as IEC 61850, are efficiently translated into a unified command format based on the IEEE 1547 standard. </p>
+<p>The scheduler agent plays a vital role within the VOLTTRON agents’ framework, facilitating efficient energy management and ensuring seamless integration with other service agents. The agent is primarily responsible for scheduling energy storage and grid operations by leveraging forecasted data on demand generation and pricing. It is supported by a modular architecture allowing for incorporating various algorithmic approaches to optimize energy scheduling efficiently.</p>
+<p>The scheduler agent operates by interacting with multiple system components, such as Photovoltaic (PV) systems and Energy Storage System (ESS) through the SunSpec Modbus protocol to ensure smooth communication and interoperability. This flexibility and adherence to standardized communication protocols help align operations and maintain consistency across the energy network. Furthermore, the scheduler agent interfaces with the <a href="../interoperability-service/">Interoperability Service</a>, real-time control agent, and grid information agent. It utilizes the common format provided by these components, which is produced by the Interoperability Service translating native device data models into a standardized format. This setup ensures that data models initially expressed in diverse native formats such as IEC 61850, are efficiently translated into a unified command format based on the IEEE 1547 standard.</p>
 
 
 
@@ -516,10 +577,11 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

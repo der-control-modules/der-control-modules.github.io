@@ -1,0 +1,1005 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../interoperability-framework/">
+      
+      
+        <link rel="next" href="../interoperability/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Interoperability Service - DER Control Modules Site</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interoperability-service" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DER Control Modules Site" class="md-header__button md-logo" aria-label="DER Control Modules Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DER Control Modules Site
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interoperability Service
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DER Control Modules Site" class="md-nav__button md-logo" aria-label="DER Control Modules Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DER Control Modules Site
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Framework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interoperability Framework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperability-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Service
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#graph-and-transform-based-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graph- and Transform-Based Interoperability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph- and Transform-Based Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uniquely-addressable-identifiers-and-the-mapping-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uniquely Addressable Identifiers and the mapping registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transform registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-control-applications-and-openfmb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration with Control Applications and OpenFMB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Agent (Deprecated)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controls
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Controls
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rt-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time Control Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openfmb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenFMB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#graph-and-transform-based-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graph- and Transform-Based Interoperability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph- and Transform-Based Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uniquely-addressable-identifiers-and-the-mapping-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uniquely Addressable Identifiers and the mapping registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transform registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-control-applications-and-openfmb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration with Control Applications and OpenFMB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="interoperability-service">Interoperability Service</h1>
+<p><a class="md-button" href="https://github.com/der-control-modules/interoperability-service">Code &amp; Installation Instructions</a></p>
+<div class="admonition note">
+<p class="admonition-title">Replaces the Interoperability Agent</p>
+<p>The Interoperability Service supersedes the VOLTTRON <a href="../interoperability/">Interoperability Agent</a>, which is
+deprecated. Where the agent held a fixed, one-to-one mapping from IEC 61850-7-420 names to each target protocol,
+the service maps every resource once through a common model and uses graph-based transformation pipelines to
+convert between any pair of supported data formats.</p>
+</div>
+<p>The Interoperability Service provides protocol-agnostic communication between control applications and
+Distributed Energy Resource (DER) devices. It provides templates for standards-based communication and reduces
+integration complexity:</p>
+<ul>
+<li><strong>Reduces vendor-specific integration effort and deployment risk.</strong> Supports interoperability across protocols
+  including SunSpec Modbus, IEEE 1815.2 (DNP3), IEEE 2030.5, IEC 61850-7-420, and OpenFMB.</li>
+<li><strong>Translates communication interfaces and data models</strong> to enable seamless device-to-application interaction
+  regardless of the native protocol of each device.</li>
+<li><strong>Enables protocol-agnostic control and reference implementations.</strong> Control applications such as the
+  <a href="../rt-control/">Real-Time Control Agent</a> and <a href="../scheduler/">Scheduler</a> are decoupled from the underlying
+  communication protocols, ensuring reliable and consistent operation across multiple ESS and DER vendors.</li>
+</ul>
+<p>As illustrated in <a href="#interop-service-mapping">Figure 1</a>, the service acts as a translator of communication interfaces and data
+models between control stations or outstations that speak different protocols.</p>
+<p><figure id="interop-service-mapping"><img alt="" src="../images/interop-service-mapping.png"><figcaption>Figure 1: The Interoperability Service translates communication interfaces and data models between IEC 61850 IEDs, SunSpec Modbus, IEEE 1815.2 (DNP3), IEEE 2030.5 (HTTP), and OpenFMB nodes on a message bus. </figcaption></figure></p>
+<h2 id="graph-and-transform-based-interoperability">Graph- and Transform-Based Interoperability</h2>
+<p>Rather than maintaining a direct mapping between every pair of protocols, the service maps each protocol-specific
+data model once onto a common data model, as shown in <a href="#interop-service-graph-transform">Figure 2</a>. Mappings between
+protocol-specific and common data models are expressed as configuration, and transformations between data formats are
+stored as edges in a directed graph. A conversion from one format to another is found as a path through this graph, so
+multi-stage transformations are composed automatically from reusable steps. This approach:</p>
+<ul>
+<li>Extends interoperability using graph-based mappings and transformation pipelines.</li>
+<li>Expands mappings between protocol-specific and common data models.</li>
+<li>Enables multi-stage transformations rather than maintaining direct mappings between every protocol pair.</li>
+<li>Supports reusable transformation paths across SunSpec Modbus, IEEE 1815.2 / DNP3, IEEE 2030.5, OpenFMB, and other
+  supported interfaces.</li>
+<li>Reduces protocol-specific custom integration.</li>
+</ul>
+<p><figure id="interop-service-graph-transform"><img alt="" src="../images/interop-service-graph-transform.png"><figcaption>Figure 2: Generalized graph- and transform-based interoperability. Source and target protocols are mapped once through a common data model, and multi-stage transformations are derived from the transform graph. </figcaption></figure></p>
+<h3 id="uniquely-addressable-identifiers-and-the-mapping-registry">Uniquely Addressable Identifiers and the mapping registry</h3>
+<p>Every resource known to the service, whether a device point, a published topic, or a control endpoint, is identified
+by a <strong>Uniquely Addressable Identifier (UAI)</strong>: an ordered tuple of path segments (for example
+<code>["site1", "ess1", "active_power"]</code>). UAIs are stored in a tree, so a resource may be looked up either exactly or by
+falling back to its nearest defined ancestor. Two kinds of resources may be registered at a UAI:</p>
+<table>
+<thead>
+<tr>
+<th>Resource type</th>
+<th>Fields</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canonical</code></td>
+<td><code>data_format</code>, <code>owner</code>, <code>publication_topic</code>, <code>rpc_topic</code></td>
+<td>The authoritative definition of a resource: the format its data is expressed in, the component that owns it, the topic on which it is published, and the RPC endpoint used to command it.</td>
+</tr>
+<tr>
+<td><code>alias</code></td>
+<td><code>data_format</code>, <code>owner</code>, <code>references</code></td>
+<td>An alternate name for another UAI (<code>references</code>), optionally expressed in a different <code>data_format</code>. Aliases may chain; resolution follows them to the canonical resource.</td>
+</tr>
+</tbody>
+</table>
+<p>When a client asks the service to <strong>resolve</strong> a UAI, optionally requesting a particular target format, the service
+returns the canonical resource definition together with the chain of transforms needed to convert the canonical data
+format into the requested one. A client such as the Real-Time Control Agent can therefore subscribe to a device's
+publication topic and receive its data already converted to the format the client understands.</p>
+<h3 id="transform-registry">Transform registry</h3>
+<p>The transform registry is a directed graph whose nodes are data formats and whose edges are transform definitions.
+Registering a transform from format A to format B adds an edge; looking up a conversion from A to C returns the
+shortest chain of registered transforms (for example A to B, then B to C). Each transform is a <strong>pattern</strong>: a
+dictionary mapping each output key to an expression that is applied to the input message. Expressions are of the form
+<code>transform[input_key](step, step, ...)</code>, where the steps are built-in conversions such as <code>multiple(n)</code>, <code>add(n)</code>,
+<code>scale_int(n)</code>, <code>scale_decimal_int_signed(n)</code>, and <code>cast_value("type")</code>. For example:</p>
+<pre><code class="language-json">{
+  "input_format": "sunspec_modbus",
+  "output_format": "common_model",
+  "pattern": {
+    "active_power_w": "transform[W](multiple(1))",
+    "reactive_power_var": "transform[VAr](multiple(1))",
+    "state_of_charge_pct": "transform[ChaState](multiple(1))"
+  }
+}
+</code></pre>
+<p>Transforms may be supplied in the configuration file or registered at runtime through the RPC interface.</p>
+<h2 id="interface">Interface</h2>
+<p>The service exposes the following interface on the VOLTTRON message bus. Its default VIP identity is
+<code>platform.presentation</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Method / topic</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resolve(uai, as_format=None, strict=False)</code></td>
+<td>RPC</td>
+<td>Resolves a UAI to its canonical resource definition. If <code>as_format</code> is given, the response includes <code>target_format</code> and the <code>transform</code> chain from the resource's data format to the target. With <code>strict=False</code>, falls back to the nearest defined ancestor UAI.</td>
+</tr>
+<tr>
+<td><code>lookup_transform(input_format, output_format)</code></td>
+<td>RPC</td>
+<td>Returns the chain of transform patterns that converts <code>input_format</code> to <code>output_format</code>, or an empty list if no path exists.</td>
+</tr>
+<tr>
+<td><code>register_transform(input_format, output_format, pattern)</code></td>
+<td>RPC</td>
+<td>Adds a transform edge to the transform registry.</td>
+</tr>
+<tr>
+<td><code>mapper/update</code></td>
+<td>PubSub</td>
+<td>Publish a list of mapping definitions (same structure as the <code>mappings</code> configuration below) to add resources to the mapping registry at runtime.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration">Configuration</h2>
+<p>The service is configured with a JSON document containing two lists, <code>mappings</code> and <code>transforms</code>:</p>
+<pre><code class="language-json">{
+  "mappings": [
+    {
+      "uai": ["site1", "ess1", "measurements"],
+      "resource_type": "canonical",
+      "resource": {
+        "data_format": "sunspec_modbus",
+        "owner": "platform.driver",
+        "publication_topic": "devices/site1/ess1/all",
+        "rpc_topic": "devices/site1/ess1"
+      }
+    },
+    {
+      "uai": ["ess", "measurements"],
+      "resource_type": "alias",
+      "resource": {
+        "data_format": "common_model",
+        "owner": "der.rtcontrol",
+        "references": ["site1", "ess1", "measurements"]
+      }
+    }
+  ],
+  "transforms": [
+    {
+      "input_format": "sunspec_modbus",
+      "output_format": "common_model",
+      "pattern": {
+        "active_power_w": "transform[W](multiple(1))",
+        "state_of_charge_pct": "transform[ChaState](multiple(1))"
+      }
+    }
+  ]
+}
+</code></pre>
+<p>In this example, a control agent that resolves the alias <code>["ess", "measurements"]</code> receives the canonical SunSpec
+resource for <code>ess1</code> along with the transform that converts SunSpec point names into the common model, without needing
+to know which protocol the device speaks.</p>
+<p>The configuration should be stored in the VOLTTRON configuration store. For a service installed with the VIP identity
+<code>platform.presentation</code>, the following command may be used:</p>
+<pre><code class="language-shell">vctl config store platform.presentation config path/to/config.json
+</code></pre>
+<h2 id="integration-with-control-applications-and-openfmb">Integration with Control Applications and OpenFMB</h2>
+<p>The Interoperability Service is integrated with the <a href="../rt-control/">Real-Time Control Agent</a> and with
+<a href="../openfmb/">OpenFMB</a>. Publish/subscribe messaging provides normalized device data to control applications, which
+consume the published data structures and issue control commands back through the framework, enabling coordinated
+actuation of multiple heterogeneous DER/ESS devices. Message bus adapters connect the framework bus to OpenFMB buses
+over NATS and MQTT, while device drivers provide direct point-to-point communication with controllers and devices.
+See the <a href="../openfmb/">OpenFMB</a> page for the integration architecture.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python &gt;= 3.10</li>
+<li>Modular Eclipse VOLTTRON (<code>volttron-core</code> &gt;= 2.0)</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Before installing, VOLTTRON should be installed and running and its virtual environment should be active.
+Information on how to install the VOLTTRON platform can be found
+<a href="https://github.com/eclipse-volttron/volttron-core">here</a>.</p>
+<p>Clone the repository and install the service into the running platform:</p>
+<pre><code class="language-shell">git clone https://github.com/der-control-modules/interoperability-service
+vctl install ./interoperability-service --vip-identity platform.presentation --tag interop --start
+vctl config store platform.presentation config path/to/config.json
+</code></pre>
+<p>View the status of the installed service:</p>
+<pre><code class="language-shell">vctl status
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

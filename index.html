@@ -13,8 +13,11 @@
         <link rel="next" href="interoperability-framework/">
       
       
+        
+      
+      
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -22,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -45,7 +48,6 @@
     
       
 
-    
     
     
   </head>
@@ -166,9 +168,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -200,9 +207,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Interoperability Framework
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -211,7 +223,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Interoperability Framework
+            
+  
+    Interoperability Framework
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -227,9 +243,42 @@
   
   
   <span class="md-ellipsis">
-    The Interoperability Framework
+    
+  
+    Overview
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="interoperability-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Service
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -250,9 +299,14 @@
   
   
   <span class="md-ellipsis">
-    Interoperability Agent
+    
+  
+    Interoperability Agent (Deprecated)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -291,9 +345,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Controls
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -302,32 +361,13 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Controls
+            
+  
+    Controls
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="controls/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -341,9 +381,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Real-Time Control Agent
+  
+
     
   </span>
+  
   
 
       </a>
@@ -364,9 +409,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Scheduler
+  
+
     
   </span>
+  
   
 
       </a>
@@ -394,9 +444,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     OpenFMB
+  
+
     
   </span>
+  
   
 
       </a>
@@ -416,9 +471,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Test Cases
+  
+
     
   </span>
+  
   
 
       </a>
@@ -454,6 +514,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -464,12 +525,12 @@
 <p>Energy storage systems (ESS) is the most capable resource, supporting grid stability, enhancing flexibility, and adding
 new services to the electrical system. However, the integration of ESS can be challenging and costly due to evolving communication standards
 and operating modes. In order to reduce integration complexity and avoid interoperability issues that delay seamless deployment,
-this work provides an open-source interoperable communication and control framework for ESS. 
+this work provides an open-source interoperable communication and control framework for ESS.
 This framework provides a protocol-agnostic interface for ESS by mapping the data models
 of IEC 61850-7-420 to protocols according to IEEE 1547 standards. In addition, controls are developed based on
 existing MESA modes and a control framework that includes scheduling and real-time control mechanisms
-to provide grid services. This framework streamlines the integration of ESS by translating communication standards, 
-providing examples of complex control modes, and therefore reducing complexity, risk, and cost associated with full utilization of ESS capabilities across diverse vendors. </p>
+to provide grid services. This framework streamlines the integration of ESS by translating communication standards,
+providing examples of complex control modes, and therefore reducing complexity, risk, and cost associated with full utilization of ESS capabilities across diverse vendors.</p>
 <h1 id="background">Background</h1>
 <p>ESS improves energy efficiency, reduces electricity costs,
 and improves the reliability of the grid. It can provide critical services like frequency regulation
@@ -479,26 +540,54 @@ vehicles (EVs), are integrated into the grid, the role of ESS is expanding. Adva
 algorithms are driving research into ESS management. For example, the financial advantages of peak shaving
 and energy arbitrage for BTM ESS under demand charge tariffs, while other works examined ESS integration to
 mitigate the short-term variability of renewable energy, further evaluated various energy storage technologies
-for grid services. </p>
+for grid services.</p>
 <p>Interoperability ensures that various energy storage systems from different manufacturers can communicate
 and coordinate charging/discharging activities efficiently. Several communication protocols and standards
-have been developed to address Sunspc Modbus, Distributed Network Protocol 3 (DNP3) and global standards like
+have been developed to address SunSpec Modbus, Distributed Network Protocol 3 (DNP3) and global standards like
 IEC 61850 for power utility operation. IEEE 2030.5 supports communication in smart grids for energy resources
 like ESS, while IEEE 1547 establishes standards for interconnection and interoperability with the grid,
 addressing voltage regulation, frequency response, anti-islanding protection and grid support functions.
 Successful ESS demonstration projects require seamless integration with other devices highlighting the need
-for standardized communication protocols to address interoperability challenges. </p>
-<h1 id="user-guide">User Guide</h1>
-<p>The agents described on this site comprise an interoperability framework to provide integration, control,
-and optimization of energy storage systems within a grid environment. This framework is described on
-<a href="/interoperability-framework">The Interoperability Framework</a> page:</p>
-<p>Each agent is additionally described on its own page, as follows:</p>
+for standardized communication protocols to address interoperability challenges.</p>
+<h1 id="problem-definition">Problem Definition</h1>
+<p>Heterogeneous protocols and vendor-specific implementations make ESS integration difficult, slowing deployment
+and limiting scalable coordination. As summarized in <a href="#problem-definition">Figure 1</a>, the value that ESS provides to the grid
+drives the need for standards, but without a standardized communication and control framework the challenges persist:</p>
 <ul>
-<li><a href="/interoperability">Interoperability Agent</a></li>
-<li><a href="/rt-control">Real-time Control</a></li>
-<li><a href="/scheduler">Scheduler</a></li>
+<li>High complexity and cost due to evolving communication standards and operating modes.</li>
+<li>Vendor-specific interoperability barriers that require custom integration for every device.</li>
+<li>Delayed ESS/DER deployment and increased integration risk.</li>
 </ul>
-<p>Links to code and installation instructions can be found at the top of each agent page.</p>
+<p><figure id="problem-definition"><img alt="" src="images/problem-definition.png"><figcaption>Figure 1: Why ESS matter, and the key challenges that a standardized communication and control framework must address. </figcaption></figure></p>
+<h1 id="proposed-solution">Proposed Solution</h1>
+<p>The framework described on this site is an open-source interoperable communication and control framework.
+As shown in <a href="#proposed-solution">Figure 2</a>, it sits between DER/ESS devices and the control applications that operate them:</p>
+<ul>
+<li><strong>Interoperable control and communication infrastructure</strong>: the <a href="interoperability-service/">Interoperability Service</a>
+  provides a standard, protocol-agnostic interface to DER devices by mapping protocol-specific data models through a
+  common model, using protocol adapters, device drivers, data mapping, and a message bus.</li>
+<li><strong>OpenFMB integration</strong>: <a href="openfmb/">message bus adapters</a> connect the framework to OpenFMB systems over NATS and MQTT.</li>
+<li><strong>Control framework</strong>: the <a href="rt-control/">Real-Time Control Agent</a> and <a href="scheduler/">Scheduler</a> implement MESA modes,
+  novel PNNL-developed control functions, and user-defined controls with both scheduling and real-time capabilities.</li>
+</ul>
+<p><figure id="proposed-solution"><img alt="" src="images/proposed-solution.png"><figcaption>Figure 2: The proposed solution. The Interoperability Service provides protocol-agnostic integration between DER/ESS devices and control applications. </figcaption></figure></p>
+<h1 id="user-guide">User Guide</h1>
+<p>The services and agents described on this site comprise an interoperability framework to provide integration, control,
+and optimization of energy storage systems within a grid environment. This framework is described on
+<a href="interoperability-framework/">The Interoperability Framework</a> page.</p>
+<p>Each component is additionally described on its own page, as follows:</p>
+<ul>
+<li><a href="interoperability-service/">Interoperability Service</a></li>
+<li><a href="rt-control/">Real-time Control</a></li>
+<li><a href="scheduler/">Scheduler</a></li>
+<li><a href="openfmb/">OpenFMB</a></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Interoperability Agent deprecated</p>
+<p>The original VOLTTRON <a href="interoperability/">Interoperability Agent</a> has been deprecated and replaced by the
+<a href="interoperability-service/">Interoperability Service</a>. The agent page is retained for reference only.</p>
+</div>
+<p>Links to code and installation instructions can be found at the top of each component page.</p>
 
 
 
@@ -547,10 +636,11 @@ and optimization of energy storage systems within a grid environment. This frame
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

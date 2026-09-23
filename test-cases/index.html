@@ -13,8 +13,11 @@
       
       
       
+        
+      
+      
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -22,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -45,7 +48,6 @@
     
       
 
-    
     
     
   </head>
@@ -157,9 +159,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -190,9 +197,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Interoperability Framework
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -201,7 +213,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Interoperability Framework
+            
+  
+    Interoperability Framework
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -217,9 +233,42 @@
   
   
   <span class="md-ellipsis">
-    The Interoperability Framework
+    
+  
+    Overview
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperability-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Service
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -240,9 +289,14 @@
   
   
   <span class="md-ellipsis">
-    Interoperability Agent
+    
+  
+    Interoperability Agent (Deprecated)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -281,9 +335,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Controls
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -292,32 +351,13 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Controls
+            
+  
+    Controls
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../controls/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -331,9 +371,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Real-Time Control Agent
+  
+
     
   </span>
+  
   
 
       </a>
@@ -354,9 +399,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Scheduler
+  
+
     
   </span>
+  
   
 
       </a>
@@ -384,9 +434,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     OpenFMB
+  
+
     
   </span>
+  
   
 
       </a>
@@ -415,9 +470,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Test Cases
+  
+
     
   </span>
+  
   
 
       </a>
@@ -454,6 +514,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -466,7 +527,7 @@ with a 150kW peak load. Tests involving energy arbitrage, demand charge reductio
 are further discussed in
 <a href="https://ieeexplore.ieee.org/document/10891219">Interoperable Energy Storage Control and Communication Framework Development</a>.</p>
 <h1 id="experimentation-results-with-volttron">Experimentation Results with VOLTTRON</h1>
-<p>In the VOLTTRON platform, the Battery Energy Storage Systems (BESS) within the grid is integrated using modulaer agents for efficiency and cost-effectiveness. Multiple agents such as Forecaster, Grid Information, Real-time (MESA charge/Discharge Power mode) and Scheduler are the data source for the system with the help of external data sources include CO2 intensity, energy generation breakdown and electricity prices from APIs to indicate BESS operations. </p>
+<p>In the VOLTTRON platform, the Battery Energy Storage Systems (BESS) within the grid is integrated using modular agents for efficiency and cost-effectiveness. Multiple agents such as Forecaster, Grid Information, Real-time (MESA charge/Discharge Power mode) and Scheduler are the data source for the system with the help of external data sources include CO2 intensity, energy generation breakdown and electricity prices from APIs to indicate BESS operations.</p>
 <h2 id="key-features">Key Features</h2>
 <table>
 <thead>
@@ -502,9 +563,32 @@ are further discussed in
 </tr>
 </tbody>
 </table>
-<p>Figure : MESA Charge/Discharge mode implementation, showing the Scheduler agent's 24-hour battery operation plan based on price signals to minimize costs and reduce peak power.
-<img alt="alt text" src="../image.png">           |</p>
-<p>This implementation highlights how predictive modeling and real-time data enhance energy management and grid service delivery through VOLTTRON, demonstrating adaptive, efficient and cost-effective operations. </p>
+<p><figure id="mesa-charge-discharge"><img alt="" src="../image.png"><figcaption>Figure 1: MESA Charge/Discharge mode implementation, showing the Scheduler agent's 24-hour battery operation plan based on price signals to minimize costs and reduce peak power. </figcaption></figure></p>
+<p>This implementation highlights how predictive modeling and real-time data enhance energy management and grid service delivery through VOLTTRON, demonstrating adaptive, efficient and cost-effective operations.</p>
+<h1 id="industry-engagement-and-ongoing-testing">Industry Engagement and Ongoing Testing</h1>
+<p>To validate the interoperability framework against real vendor equipment, PNNL is engaging key industry vendors,
+including SEL, Eaton, WAGO, Leidos, and Schneider Electric, and has established a dedicated interoperability test
+environment at PNNL. The test setup, shown in <a href="#testing-setup">Figure 3</a>, hosts the interoperability framework on a WAGO
+processor and connects it to:</p>
+<ul>
+<li><strong>Device gateways with integrated end devices</strong>: Eaton grid edge devices (e.g., EdgeAP / Grid Edge Manager),
+  SEL RTAC (e.g., RTAC 3555/3505), and WAGO grid edge controllers, each with PV, BESS, inverter, meter, feeder, relay,
+  or load end devices behind them, communicating over standard protocols (Modbus, DNP3, IEC 61850).</li>
+<li><strong>Simulated end devices</strong>: software models of BESS, PV, wind, flexible load, and meters, reached directly from the
+  framework.</li>
+</ul>
+<p>Supported protocols in the test environment include Modbus (SunSpec), DNP3 (IEEE 1815.2), IEC 61850, IEEE 2030.5 (SEP),
+OpenFMB/MESA, and vendor-specific protocols via drivers. The goals of this effort are to:</p>
+<ul>
+<li>Validate the interoperability framework using real vendor devices, including gateways, controllers, and DER
+  interfaces from Eaton, SEL, and WAGO.</li>
+<li>Demonstrate interoperability across multiple protocols and data models, including OpenFMB, IEEE 1547 /
+  IEC 61850-7-420, and utility integration interfaces.</li>
+<li>Conduct structured and repeatable interoperability testing across multiple use cases, using vendor feedback to
+  refine data models, message mappings, framework capabilities, and real-time control workflows.</li>
+</ul>
+<p><figure id="industry-engagement"><img alt="" src="../images/industry-engagement.png"><figcaption>Figure 2: Path to a protocol-agnostic, interoperable DER ecosystem: vendor engagement, device integration, interoperability testing, and framework refinement. </figcaption></figure></p>
+<p><figure id="testing-setup"><img alt="" src="../images/testing-setup.png"><figcaption>Figure 3: Ongoing interoperability test setup at PNNL. Path 1 reaches end devices through vendor gateways (Eaton, SEL RTAC, WAGO controller); Path 2 connects the framework directly to simulated end devices. </figcaption></figure></p>
 
 
 
@@ -553,10 +637,11 @@ are further discussed in
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
