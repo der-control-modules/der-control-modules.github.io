@@ -1,3 +1,11 @@
+# Interoperability Agent (Deprecated)
+
+!!! warning "Deprecated"
+    The VOLTTRON Interoperability Agent is **deprecated** and is no longer maintained. It has been replaced by the
+    [Interoperability Service](interoperability-service.md), which generalizes the one-to-one protocol mappings of the
+    agent into a common-model, graph- and transform-based mapping service with message bus integration and OpenFMB
+    support. This page is retained for reference only. New deployments should use the Interoperability Service.
+
 [Code & Installation Instructions](https://github.com/der-control-modules/interoperability-agent){ .md-button }
 
 The VOLTTRON interoperability agent provides a standard, protocol-agnostic interface for
@@ -5,7 +13,7 @@ Distributed Energy Resources (DER) devices by mapping IEC 61850-7-420 data model
 IEEE 1815.2, IEEE 2030.5, and custom protocols, in line with IEEE 1547 standards.
 It translates the required functionalities into specific protocols for device control.
 As illustrated [](#interop-one-to-many), an actor wishing to communicate with devices using multiple protocols
-compliant with IEEE 1547 can use the interoperability agent to manage all such devices. 
+compliant with IEEE 1547 can use the interoperability agent to manage all such devices.
 
 Figure: The interoperability agent provides a standard, protocol-agnostic interface to DER devices.
 It maps IEC 61850-7-420 data models to the appropriate point names in protocols that implement specific
@@ -29,3 +37,14 @@ to devices lacking native implementation.
 {#interop-direct-and-non-compliant}
 
 ![](images/interop-direct-and-non-compliant.png)
+
+## Migrating to the Interoperability Service
+
+The limitations of the agent motivated the design of the [Interoperability Service](interoperability-service.md):
+
+| Interoperability Agent (deprecated)                                                     | Interoperability Service                                                                                                   |
+|-----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Direct mapping from IEC 61850-7-420 names to each target protocol, one target at a time. | Map once through a common model; graph-based transforms enable multi-stage conversions between any supported formats.      |
+| Built-in mappings limited to SunSpec Modbus and IEEE 1815.2 target types.                | Mappings and transforms are configuration data that can be registered and updated at runtime.                              |
+| Communicates with devices only through the VOLTTRON Platform Driver.                     | Integrates device drivers, the VOLTTRON message bus, and OpenFMB message bus adapters (NATS, MQTT).                        |
+| Devices without native IEEE 1547 support require an additional intermediary agent.       | Control agents consume normalized, published data and issue commands through the framework regardless of native protocol. |

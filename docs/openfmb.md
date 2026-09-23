@@ -1,4 +1,4 @@
-# OpenFMB 
+# OpenFMB
 
 Message Bus is a critical middleware component in the distributed systems architecture on various systems
 and environments. Open Field Message Bus (open FMB) is an extensive framework for robust communication between
@@ -7,12 +7,12 @@ of microgrid communication, such as low standards with the data structure combin
 towards the grid utilities. For instance, open FMB can be used to translate traditional protocols, including Modbus
 and DNP3 and NATS.
 
-To facilitate integration of OpenFMB systems with the agents of this interoperability framework, capabilities are
-currently being added to VOLTTRON to facilitate interaction with OpenFMB aware devices.  These capabilities will
-include message bus adapters to enable communication with common OpenFMB message buses, such as MQTT, and facilities
-for passing and interacting with data objects encoded using protocol buffers from within VOLTTRON agents.
+OpenFMB provides the interoperable messaging layer connecting heterogeneous DER devices, controllers, and
+applications. Integration of OpenFMB systems with this interoperability framework is provided by message bus adapters
+and by the [Interoperability Service](interoperability-service.md), as described in
+[Integration with the Interoperability Framework](#integration-with-the-interoperability-framework) below.
 
-## Architecture 
+## Architecture
 
 Message buses provide asynchronous communication that performs message transfer between the senders and receivers
 without a need for immediate response from the receivers as soon the sender sends the message. The components in
@@ -29,7 +29,7 @@ Figure: OpenFMB Architecture {#openfmb-architecture}
 
 ## Open-FMB Based Grid
 
-The **Open-FMB Based Grid** is designed to enhance flexibility, interoperability, and efficiency in energy 
+The **Open-FMB Based Grid** is designed to enhance flexibility, interoperability, and efficiency in energy
 management systems.
 
 Figure: OpenFMB Key Features and Properties {#openfmb-features}
@@ -53,6 +53,30 @@ Figure: OpenFMB Key Features and Properties {#openfmb-features}
 
 7. **Distributed Decision Making**: By enabling **distributed decision-making**, the Open-FMB Grid supports more efficient and localized responses to grid conditions, allowing for quicker adjustments based on real-time data.
 
+## Integration with the Interoperability Framework
 
+The framework extends OpenFMB from basic message exchange toward scalable multi-device coordination.
+As shown in [](#openfmb-integration), the Interoperability Service connects to OpenFMB buses through message bus
+adapters while continuing to talk directly to devices through drivers:
 
+* **Message bus adapters** connect the internal framework message bus with external OpenFMB buses over NATS and MQTT.
+  An OpenFMB device adapter on the external bus exposes SunSpec, MESA (DNP3), and IEEE 2030.5 DER devices as OpenFMB
+  nodes, and OpenFMB applications on that bus can interact with the framework.
+* **Device drivers** enable direct point-to-point communication with controllers and DER devices over Modbus, DNP3,
+  and HTTP (IEEE 2030.5).
+* **Identifier mapping and data-model transformations**, provided by the mapping and transform registries of the
+  Interoperability Service, enable communication across all supported protocols.
+* Both **publish/subscribe** and **direct device communication** are supported.
 
+Figure: OpenFMB integration. Message bus adapters (MQTT, NATS) connect the Interoperability Service to an external
+OpenFMB bus, while device drivers provide direct access to SunSpec, MESA, and IEEE 2030.5 devices.
+{#openfmb-integration}
+
+![](images/openfmb-integration.png)
+
+Code for the OpenFMB integration components:
+
+* [message-bus-adapter](https://github.com/der-control-modules/message-bus-adapter)
+* [lib-protocol-proxy-nats](https://github.com/der-control-modules/lib-protocol-proxy-nats)
+* [lib-protocol-proxy-mqtt](https://github.com/der-control-modules/lib-protocol-proxy-mqtt)
+* [openfmb_der](https://github.com/der-control-modules/openfmb_der) (OpenFMB test tool)

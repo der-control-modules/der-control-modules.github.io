@@ -10,11 +10,14 @@ plugins:
 
 markdown_extensions:
   - attr_list
+  - admonition
 
 nav:
   - Home: index.md
-  - Interoperability Framework: interoperability-framework.md
-      - Interoperability Agent: interoperability.md
+  - Interoperability Framework:
+      - Overview: interoperability-framework.md
+      - Interoperability Service: interoperability-service.md
+      - Interoperability Agent (Deprecated): interoperability.md
   - Controls:
       - Real-Time Control Agent: rt-control.md
       - Scheduler: scheduler.md

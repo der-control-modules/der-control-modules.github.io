@@ -6,13 +6,13 @@ The Real-Time (RT) Control Agent provides a framework for actuating one or more 
 on an energy storage system. The RTControl framework involves the use of three abstract class types:
 EnergyStorageSystem, ControlMode, and UseCase.
 
-For each class there are several built-in subclasses, but user defined classes may also be configured and used.		
-    
+For each class there are several built-in subclasses, but user defined classes may also be configured and used.
+
 ### EnergyStorageSystem
 
 ESS classes abstract an energy storage system into a standard interface for use by control modes.
 The base class allows configuration of points on which state of charge and power
-can be monitored and (in the case of power) commanded. 
+can be monitored and (in the case of power) commanded.
 Currently two built-in ESS classes are shown in [](#storage-systems)
 
 Table: Energy Storage Systems Implemented in the Real-Time Control Agent {#storage-systems}
@@ -58,6 +58,29 @@ Table: Control Modes Implemented in the Real-Time Control Agent {#control-modes}
 | AGC                             | Implements the MESA AGC Mode. This follows an AGC command signal.                                                                                                                                                                                                                                              |
 | Adaptive Moving Average Control | Similar to the Active Power Smoothing mode, but using an algorithm which self-optimizes the window of the moving average filter by using a longer window (more aggressive smoothing) when variability is high and a shorter window (which will utiilize less of the storage resource)when variability is low.  |
 | Charge/Discharge Storage        | Implements the MESA Charge/Discharge Storage Mode. The battery is actuated using an ingested schedule or a pre-configured value.                                                                                                                                                                               |
-| Frequency-Watt                  | Implements the MESA Frequency-Watt Mode. This utilizes a configured curve to adjust power in response to a measured frequency signal, with the goal of supporting the nominal grid frequency.                                                                                                                  | 
+| Frequency-Watt                  | Implements the MESA Frequency-Watt Mode. This utilizes a configured curve to adjust power in response to a measured frequency signal, with the goal of supporting the nominal grid frequency.                                                                                                                  |
 | PID                             | Uses a PID loop to attempt to maintain power targets in response to changes in load or generation.                                                                                                                                                                                                             |
 | Rule Based                      | The rule based control is organized around developing rules to modify the battery set point from the day-ahead planning in real time.                                                                                                                                                                          |
+
+## Integration with the Interoperability Service
+
+The RT Control Agent is integrated with the [Interoperability Service](interoperability-service.md) and OpenFMB.
+Publish/subscribe messaging provides normalized device data to control applications: the RT Control Agent consumes
+the published data structures and issues control commands back through the interoperability framework, regardless of
+the native protocol of each device. This enables coordinated actuation of multiple heterogeneous DER/ESS devices using
+MESA control modes, PNNL-developed control functions, and user-defined control algorithms, with both scheduling and
+real-time control.
+
+## Shared Backend: Control Evaluation Engine
+
+The control algorithms of the RT Control Agent are implemented in the
+[Control Evaluation Engine](https://github.com/der-control-modules/ctrl-eval-engine), a Julia application that is also
+the backend for the web-based [ES-Control](https://es-control.pnnl.gov/) energy storage simulation tool, as shown in
+[](#ctrl-eval-engine-architecture). ES-Control lets users select scheduling and control algorithms and analyze their
+performance for multiple use cases on a simulated energy storage system. Because the RT Control Agent shares the same
+backend, the simulated performance can be compared directly against real-world operation.
+
+Figure: ES-Control and the RT Control Agent share the Control Evaluation Engine as a common backend.
+{#ctrl-eval-engine-architecture}
+
+![](images/ctrl-eval-engine-architecture.png)
