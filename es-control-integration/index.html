@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../deployment/">
+        <link rel="prev" href="../scheduler/">
       
+      
+        <link rel="next" href="../grid-signals/">
       
       
         
@@ -21,7 +23,7 @@
     
     
       
-        <title>Test Cases - DER Control Modules Site</title>
+        <title>ES Control Integration - DER Control Modules Site</title>
       
     
     
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#test-cases" class="md-skip">
+        <a href="#es-control-integration" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Test Cases
+              ES Control Integration
             
           </span>
         </div>
@@ -400,18 +402,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -432,7 +436,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -614,10 +618,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../es-control-integration/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ES Control Integration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -633,6 +664,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#control-evaluation-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control Evaluation Engine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-the-real-time-control-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration with the Real-Time Control Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -815,19 +899,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
         
   
   
@@ -843,7 +918,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -868,6 +942,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#control-evaluation-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control Evaluation Engine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-the-real-time-control-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration with the Real-Time Control Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -883,74 +998,78 @@
 
 
 
-<h1 id="test-cases">Test Cases</h1>
-<p>The communication and control framework has been tested on the PNNL campus using a 125kW/250kWh BESS and a building
-with a 150kW peak load. Tests involving energy arbitrage, demand charge reduction and MESA charge/ discharge modes
-are further discussed in
-<a href="https://ieeexplore.ieee.org/document/10891219">Interoperable Energy Storage Control and Communication Framework Development</a>.</p>
-<h1 id="experimentation-results-with-volttron">Experimentation Results with VOLTTRON</h1>
-<p>In the VOLTTRON platform, the Battery Energy Storage Systems (BESS) within the grid is integrated using modular agents for efficiency and cost-effectiveness. Multiple agents such as the <a href="../forecaster-agent/">Forecaster</a>, <a href="../grid-signals/">Grid Signals</a>, <a href="../rt-control/">Real-Time Control</a> (MESA Charge/Discharge Power mode) and <a href="../scheduler/">Scheduler</a> are the data source for the system with the help of external data sources include CO2 intensity, energy generation breakdown and electricity prices from APIs to indicate BESS operations.</p>
-<h2 id="key-features">Key Features</h2>
+<h1 id="es-control-integration">ES Control Integration</h1>
+<p><a class="md-button" href="https://github.com/der-control-modules/ctrl-eval-engine">Control Evaluation Engine</a>
+<a class="md-button" href="https://es-control.pnnl.gov/">ES-Control Web Tool</a></p>
+<p><a href="https://es-control.pnnl.gov/">ES-Control</a> is PNNL's web-based energy storage simulation tool. Users select
+scheduling and real-time control algorithms, define use cases, and analyze the performance of the algorithms on a
+simulated energy storage system. Its backend, the <strong>Control Evaluation Engine</strong>, is also the backend of the
+<a href="../rt-control/">Real-Time Control Agent</a>, so an algorithm evaluated in ES-Control can be actuated on real hardware
+without re-implementation, and simulated performance can be compared directly against real-world operation, as shown
+in <a href="#ctrl-eval-engine-architecture">Figure 1</a>.</p>
+<p><figure id="ctrl-eval-engine-architecture"><img alt="" src="../images/ctrl-eval-engine-architecture.png"><figcaption>Figure 1: ES-Control and the Real-Time Control Agent share the Control Evaluation Engine as a common backend. </figcaption></figure></p>
+<h2 id="control-evaluation-engine">Control Evaluation Engine</h2>
+<p>The Control Evaluation Engine is written primarily in Julia, with some Python components. It is summarized in
+<a href="#control-eval-engine">Figure 2</a> and consists of four modules:</p>
 <table>
 <thead>
 <tr>
-<th>Feature</th>
-<th>Description</th>
+<th>Module</th>
+<th>Contents</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Forecast Inputs</strong></td>
-<td>Day-ahead forecasts of CO2 intensity, energy generation mix, and electricity prices.</td>
+<td><strong>Real-time controller</strong></td>
+<td>Real-time control algorithms: the MESA-ESS modes, Adaptive Moving Average Control (AMAC), rule-based control, and PID control. See <a href="../mesa-modes/">MESA Modes</a> and <a href="../novel-real-time-control/">Novel Real-Time Control</a>.</td>
 </tr>
 <tr>
-<td><strong>Optimization Process</strong></td>
-<td>Provides outdoor temperature and load forecasts for scheduling BESS operations.</td>
+<td><strong>Scheduler</strong></td>
+<td>Scheduling algorithms: rule-based, time-of-use, linear optimization, and reinforcement learning. See <a href="../scheduler/">Scheduler</a>.</td>
 </tr>
 <tr>
-<td><strong>Optimization Objectives</strong></td>
-<td>Focuses on minimizing electricity expenses using forecasted price signals for a 24-hour operation plan.</td>
+<td><strong>Simulator</strong></td>
+<td>Energy storage simulators used by ES-Control, and mock simulators used by the Real-Time Control Agent to represent the state of a real device to the algorithms.</td>
 </tr>
 <tr>
-<td><strong>Constraints</strong></td>
-<td>Ensures BESS power limits and State of Charge (SoC) boundaries are maintained.</td>
-</tr>
-<tr>
-<td><strong>Power Management</strong></td>
-<td>Utilizes price signals for efficient battery charging and discharging.</td>
-</tr>
-<tr>
-<td><strong>Modular Integration</strong></td>
-<td>VOLTTRON agents collaborate to provide dynamic and efficient energy management.</td>
+<td><strong>Use case</strong></td>
+<td>Use case definitions (energy arbitrage, peak limiting, load and generation following, regulation, variability mitigation, and others) that supply the information the algorithms act on.</td>
 </tr>
 </tbody>
 </table>
-<p><figure id="mesa-charge-discharge"><img alt="" src="../image.png"><figcaption>Figure 1: MESA Charge/Discharge mode implementation, showing the Scheduler agent's 24-hour battery operation plan based on price signals to minimize costs and reduce peak power. </figcaption></figure></p>
-<p>This implementation highlights how predictive modeling and real-time data enhance energy management and grid service delivery through VOLTTRON, demonstrating adaptive, efficient and cost-effective operations.</p>
-<h1 id="industry-engagement-and-ongoing-testing">Industry Engagement and Ongoing Testing</h1>
-<p>To validate the interoperability framework against real vendor equipment, PNNL is engaging key industry vendors,
-including SEL, Eaton, WAGO, Leidos, and Schneider Electric, and has established a dedicated interoperability test
-environment at PNNL. The test setup, shown in <a href="#testing-setup">Figure 3</a>, hosts the interoperability framework on a WAGO
-processor and connects it to:</p>
-<ul>
-<li><strong>Device gateways with integrated end devices</strong>: Eaton grid edge devices (e.g., EdgeAP / Grid Edge Manager),
-  SEL RTAC (e.g., RTAC 3555/3505), and WAGO grid edge controllers, each with PV, BESS, inverter, meter, feeder, relay,
-  or load end devices behind them, communicating over standard protocols (Modbus, DNP3, IEC 61850).</li>
-<li><strong>Simulated end devices</strong>: software models of BESS, PV, wind, flexible load, and meters, reached directly from the
-  framework.</li>
-</ul>
-<p>Supported protocols in the test environment include Modbus (SunSpec), DNP3 (IEEE 1815.2), IEC 61850, IEEE 2030.5 (SEP),
-OpenFMB/MESA, and vendor-specific protocols via drivers. The goals of this effort are to:</p>
-<ul>
-<li>Validate the interoperability framework using real vendor devices, including gateways, controllers, and DER
-  interfaces from Eaton, SEL, and WAGO.</li>
-<li>Demonstrate interoperability across multiple protocols and data models, including OpenFMB, IEEE 1547 /
-  IEC 61850-7-420, and utility integration interfaces.</li>
-<li>Conduct structured and repeatable interoperability testing across multiple use cases, using vendor feedback to
-  refine data models, message mappings, framework capabilities, and real-time control workflows.</li>
-</ul>
-<p><figure id="industry-engagement"><img alt="" src="../images/industry-engagement.png"><figcaption>Figure 2: Path to a protocol-agnostic, interoperable DER ecosystem: vendor engagement, device integration, interoperability testing, and framework refinement. </figcaption></figure></p>
-<p><figure id="testing-setup"><img alt="" src="../images/testing-setup.png"><figcaption>Figure 3: Ongoing interoperability test setup at PNNL. Path 1 reaches end devices through vendor gateways (Eaton, SEL RTAC, WAGO controller); Path 2 connects the framework directly to simulated end devices. </figcaption></figure></p>
+<p><figure id="control-eval-engine"><img alt="" src="../images/control-eval-engine.png"><figcaption>Figure 2: The Control Evaluation Engine provides a shared backend for energy storage control. </figcaption></figure></p>
+<h2 id="integration-with-the-real-time-control-agent">Integration with the Real-Time Control Agent</h2>
+<p>The Real-Time Control Agent calls the engine through PyJulia. Each <a href="../novel-real-time-control/">novel control mode</a>
+wraps an engine controller: on every control interval the agent converts the storage system state, use case data,
+and current schedule period into engine types, asks the engine's controller for a set point, and applies the result to
+the hardware. The agent-level configuration parameters <code>ctrl_eval_engine_app_path</code> and <code>julia_path</code> tell the modes
+where to find the engine and the Julia runtime.</p>
+<h2 id="installation">Installation</h2>
+<p>Calling Julia from Python requires a Python interpreter that dynamically links <code>libpython</code>. The system Python on
+Debian-based distributions is statically linked, so a dynamically linked interpreter must be built, for example with
+pyenv:</p>
+<pre><code class="language-shell">curl https://pyenv.run | bash
+PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.10.14
+pyenv virtualenv 3.10.14 pyjulia
+pyenv activate pyjulia
+pip install pandas julia
+</code></pre>
+<p>Then, in Julia, point PyCall at that interpreter and activate the engine:</p>
+<pre><code class="language-julia">ENV["PYTHON"] = "/home/volttron/.pyenv/versions/3.10.14/envs/pyjulia/bin/python"
+] build PyCall
+] activate ctrl-eval-engine-app
+using CtrlEvalEngine
+</code></pre>
+<p>and from Python, initialize PyJulia against the engine project:</p>
+<pre><code class="language-python">from julia.api import LibJulia
+api = LibJulia.load(julia="/home/volttron/julia-1.10.4/bin/julia")
+api.init_julia(["--project=/home/volttron/ctrl-eval-engine-app"])
+from julia import CtrlEvalEngine
+</code></pre>
+<p>Full step-by-step instructions, including verification that PyCall found the dynamic <code>libpython</code>, are in the
+<a href="https://github.com/der-control-modules/ctrl-eval-engine#installation">ctrl-eval-engine README</a>. If integration with
+the Real-Time Control Agent is not required, the engine can also be run standalone in Docker using the Dockerfiles in
+the repository.</p>
 
 
 

@@ -1,0 +1,1483 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../der-control-fastlib/">
+      
+      
+        <link rel="next" href="../test-cases/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Deploying the Framework and Applications - DER Control Modules Site</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploying-the-framework-and-applications" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DER Control Modules Site" class="md-header__button md-logo" aria-label="DER Control Modules Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DER Control Modules Site
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploying the Framework and Applications
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DER Control Modules Site" class="md-nav__button md-logo" aria-label="DER Control Modules Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DER Control Modules Site
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Framework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interoperability Framework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperability-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperability-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interoperability Service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../message-bus-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Message Bus Adapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MQTT Protocol Proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NATS Protocol Proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openfmb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenFMB Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Applications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time Control
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Real-Time Control
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rt-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time Control Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../novel-real-time-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Novel Real-Time Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mesa-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MESA Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../es-control-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ES Control Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grid-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid Signals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forecaster-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forecaster Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../der-control-fastlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    der-control-fastlib Runtime
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying the Framework and Applications
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying the Framework and Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-prepare-the-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prepare the host
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-the-runtime-and-start-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Install the runtime and start the server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-deploy-the-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Deploy the framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Deploy the framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interoperability-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interoperability Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-bus-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Bus Adapter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device drivers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-deploy-the-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Deploy the applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Deploy the applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#novel-control-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Novel control modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-verify-the-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Verify the deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-as-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running as services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-a-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updating a deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-prepare-the-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prepare the host
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-the-runtime-and-start-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Install the runtime and start the server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-deploy-the-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Deploy the framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Deploy the framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interoperability-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interoperability Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-bus-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Bus Adapter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device drivers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-deploy-the-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Deploy the applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Deploy the applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#novel-control-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Novel control modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-verify-the-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Verify the deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-as-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running as services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-a-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updating a deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="deploying-the-framework-and-applications">Deploying the Framework and Applications</h1>
+<p>This page walks through a complete deployment of the <a href="../interoperability-framework/">Interoperability Framework</a> and
+the <a href="../rt-control/">Applications</a> on the <a href="../der-control-fastlib/">der-control-fastlib runtime</a>. Every component is a
+separate process that connects to one <code>aems-server</code>, so a deployment consists of starting the server, starting the
+framework components that talk to devices, and then starting the applications that consume the normalized data.</p>
+<div class="admonition note">
+<p class="admonition-title">Deploying on VOLTTRON</p>
+<p>The components can also be deployed on a full Eclipse VOLTTRON platform. In that case, replace the <code>run_agent</code>
+commands below with the <code>vctl install</code> and <code>vctl config store</code> commands given on each component's page.</p>
+</div>
+<h2 id="deployment-layout">Deployment layout</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Component</th>
+<th>Identity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runtime</td>
+<td><a href="../der-control-fastlib/">der-control-fastlib</a> <code>aems-server</code></td>
+<td></td>
+<td>Message bus and configuration store.</td>
+</tr>
+<tr>
+<td>Framework</td>
+<td><a href="../interoperability-service/">Interoperability Service</a></td>
+<td><code>platform.presentation</code></td>
+<td>Resolves identifiers and transforms data models.</td>
+</tr>
+<tr>
+<td>Framework</td>
+<td><a href="../message-bus-adapter/">Message Bus Adapter</a> with <a href="../mqtt/">MQTT</a> or <a href="../nats/">NATS</a> proxy</td>
+<td><code>platform.bus_adapter</code></td>
+<td>Relays data to and from OpenFMB buses.</td>
+</tr>
+<tr>
+<td>Framework</td>
+<td>Device drivers</td>
+<td><code>platform.driver</code></td>
+<td>Direct communication with SunSpec Modbus, DNP3, and IEEE 2030.5 devices.</td>
+</tr>
+<tr>
+<td>Application</td>
+<td><a href="../grid-signals/">Grid Signals</a></td>
+<td><code>grid.signals</code></td>
+<td>Price and CO₂ signals.</td>
+</tr>
+<tr>
+<td>Application</td>
+<td><a href="../forecaster-agent/">Forecaster Agent</a></td>
+<td><code>load.forecaster</code></td>
+<td>Building load forecast.</td>
+</tr>
+<tr>
+<td>Application</td>
+<td><a href="../scheduler/">Scheduler</a></td>
+<td><code>agent.scheduler</code></td>
+<td>Day-ahead dispatch.</td>
+</tr>
+<tr>
+<td>Application</td>
+<td><a href="../rt-control/">Real-Time Control Agent</a></td>
+<td><code>der.rtcontrol</code></td>
+<td>Real-time actuation with MESA and novel modes.</td>
+</tr>
+</tbody>
+</table>
+<p>Start the layers in this order. The framework components must be connected before the applications start, because
+the applications resolve their device topics through the Interoperability Service.</p>
+<h2 id="1-prepare-the-host">1. Prepare the host</h2>
+<pre><code class="language-shell">sudo apt-get install -y python3.10 python3.10-venv git
+python3.10 -m venv ~/der-control
+source ~/der-control/bin/activate
+pip install --upgrade pip
+export VOLTTRON_HOME=~/.der-control
+mkdir -p $VOLTTRON_HOME/configs
+</code></pre>
+<p>Add the <code>VOLTTRON_HOME</code> export to the shell profile so that every component finds the same runtime directory.</p>
+<h2 id="2-install-the-runtime-and-start-the-server">2. Install the runtime and start the server</h2>
+<pre><code class="language-shell">pip install git+https://github.com/der-control-modules/der-control-fastlib
+aems-server --host 127.0.0.1 --port 8000
+</code></pre>
+<p>Leave the server running in its own terminal, or install it as a service (see <a href="#running-as-services">Running as services</a>).
+Confirm it is up:</p>
+<pre><code class="language-shell">curl http://127.0.0.1:8000/version
+curl http://127.0.0.1:8000/health
+</code></pre>
+<h2 id="3-deploy-the-framework">3. Deploy the framework</h2>
+<p>Install the framework packages into the same virtual environment:</p>
+<pre><code class="language-shell">pip install git+https://github.com/der-control-modules/interoperability-service
+pip install git+https://github.com/der-control-modules/lib-protocol-proxy-mqtt   # and/or lib-protocol-proxy-nats
+pip install git+https://github.com/der-control-modules/message-bus-adapter
+</code></pre>
+<h3 id="interoperability-service">Interoperability Service</h3>
+<p>Write the mappings and transforms for your devices to <code>$VOLTTRON_HOME/configs/interoperability.json</code> (see the
+<a href="../interoperability-service/#configuration">configuration example</a>), then start the service:</p>
+<pre><code class="language-shell">interoperability-service --identity platform.presentation --host 127.0.0.1 --port 8000 \
+    --config $VOLTTRON_HOME/configs/interoperability.json
+</code></pre>
+<p>Mappings and transforms can be added later without a restart, either by publishing to the <code>mapper/update</code> topic or
+by storing an updated configuration:</p>
+<pre><code class="language-shell">curl -X PUT http://127.0.0.1:8000/config-store/platform.presentation/config \
+     -H "Content-Type: application/json" --data @$VOLTTRON_HOME/configs/interoperability.json
+</code></pre>
+<h3 id="message-bus-adapter">Message Bus Adapter</h3>
+<p>If the deployment exchanges data with an OpenFMB bus, write the adapter configuration
+(see <a href="../message-bus-adapter/#configuration">Message Bus Adapters</a>) and start the adapter. It launches the MQTT or
+NATS proxy process for each configured broker:</p>
+<pre><code class="language-shell">python -m bus_adapter.agent --identity platform.bus_adapter --host 127.0.0.1 --port 8000 \
+    --config $VOLTTRON_HOME/configs/bus_adapter.json
+</code></pre>
+<h3 id="device-drivers">Device drivers</h3>
+<p>Devices reached directly over SunSpec Modbus, DNP3 (IEEE 1815.2), or IEEE 2030.5 are served by a driver process
+that publishes device data on <code>devices/&lt;campus&gt;/&lt;building&gt;/&lt;device&gt;/all</code> and accepts set points over RPC. Register
+each device's publication and RPC topics as canonical resources in the Interoperability Service configuration so
+that applications can address them by identifier rather than by protocol.</p>
+<h2 id="4-deploy-the-applications">4. Deploy the applications</h2>
+<p>Install the application packages:</p>
+<pre><code class="language-shell">pip install git+https://github.com/der-control-modules/grid-signals
+pip install git+https://github.com/der-control-modules/load-forecaster
+pip install git+https://github.com/der-control-modules/scheduler
+pip install git+https://github.com/der-control-modules/realtime-control-agent
+</code></pre>
+<p>Write one configuration file per application in <code>$VOLTTRON_HOME/configs/</code>, using the examples on the
+<a href="../grid-signals/#configuration">Grid Signals</a>, <a href="../forecaster-agent/#configuration">Forecaster Agent</a>,
+<a href="../scheduler/#configuration">Scheduler</a>, and <a href="../rt-control/#configuration">Real-Time Control Agent</a> pages. Then start
+the applications, inputs first:</p>
+<pre><code class="language-shell">python -m grid_signals_agent.agent --identity grid.signals   --host 127.0.0.1 --port 8000 \
+    --config $VOLTTRON_HOME/configs/grid_signals.json
+python -m load_forecaster.agent    --identity load.forecaster --host 127.0.0.1 --port 8000 \
+    --config $VOLTTRON_HOME/configs/forecaster.json
+python -m scheduler.agent          --identity agent.scheduler --host 127.0.0.1 --port 8000 \
+    --config $VOLTTRON_HOME/configs/scheduler.json
+python -m rt_control.agent         --identity der.rtcontrol   --host 127.0.0.1 --port 8000 \
+    --config $VOLTTRON_HOME/configs/rt_control.json
+</code></pre>
+<p>The Scheduler's <code>forecast_config</code> should point at the topics published by Grid Signals
+(<code>devices/&lt;campus&gt;/grid_information/price/all</code>, point <code>tou</code>) and the Forecaster
+(<code>devices/&lt;campus&gt;/&lt;building&gt;/forecast/all</code>, point <code>load</code>), and the Real-Time Control Agent's <code>ess</code> block should
+name the device topics registered in the Interoperability Service.</p>
+<h3 id="novel-control-modes">Novel control modes</h3>
+<p>If the Real-Time Control Agent is configured with <a href="../novel-real-time-control/">novel modes</a>, the host additionally
+needs Julia and the Control Evaluation Engine, and the virtual environment must use a dynamically linked Python.
+Follow <a href="../es-control-integration/#installation">ES Control Integration</a> before starting the agent, and set
+<code>ctrl_eval_engine_app_path</code> and <code>julia_path</code> in its configuration.</p>
+<h2 id="5-verify-the-deployment">5. Verify the deployment</h2>
+<pre><code class="language-shell">curl http://127.0.0.1:8000/health                       # every identity above should report healthy
+curl "http://127.0.0.1:8000/config-store/list"           # one 'config' entry per component
+</code></pre>
+<p>Run a listener (see <a href="../der-control-fastlib/#running-an-agent">Running an agent</a>) subscribed to <code>devices/</code> and
+<code>record/</code> to watch device data, grid signals, forecasts, and the published schedule flow across the bus.</p>
+<h2 id="running-as-services">Running as services</h2>
+<p>For an unattended deployment, run each process under systemd. A unit for the server:</p>
+<pre><code class="language-ini"># /etc/systemd/system/aems-server.service
+[Unit]
+Description=der-control-fastlib message bus
+After=network.target
+
+[Service]
+User=volttron
+Environment=VOLTTRON_HOME=/home/volttron/.der-control
+ExecStart=/home/volttron/der-control/bin/aems-server --host 127.0.0.1 --port 8000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>and a template for the components, one instance per identity:</p>
+<pre><code class="language-ini"># /etc/systemd/system/der-control@.service
+[Unit]
+Description=DER control component %i
+After=aems-server.service
+Requires=aems-server.service
+
+[Service]
+User=volttron
+Environment=VOLTTRON_HOME=/home/volttron/.der-control
+EnvironmentFile=/home/volttron/.der-control/env/%i
+ExecStart=/home/volttron/der-control/bin/python -m ${MODULE} --identity %i --host 127.0.0.1 --port 8000 \
+    --config /home/volttron/.der-control/configs/%i.json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>where each environment file (for example <code>env/der.rtcontrol</code>) sets <code>MODULE=rt_control.agent</code>. Enable the services
+in dependency order:</p>
+<pre><code class="language-shell">sudo systemctl enable --now aems-server
+sudo systemctl enable --now der-control@platform.presentation der-control@platform.bus_adapter
+sudo systemctl enable --now der-control@grid.signals der-control@load.forecaster \
+                            der-control@agent.scheduler der-control@der.rtcontrol
+</code></pre>
+<h2 id="updating-a-deployment">Updating a deployment</h2>
+<p>Upgrade a component by reinstalling its package and restarting its service; configurations in the configuration store
+are preserved across restarts:</p>
+<pre><code class="language-shell">pip install --upgrade git+https://github.com/der-control-modules/realtime-control-agent
+sudo systemctl restart der-control@der.rtcontrol
+</code></pre>
+<p>Configuration changes never require a restart: store the new configuration with a <code>PUT</code> to the configuration store
+and the component receives an update notification.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
