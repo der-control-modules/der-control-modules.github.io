@@ -17,10 +17,21 @@ nav:
   - Interoperability Framework:
       - Overview: interoperability-framework.md
       - Interoperability Service: interoperability-service.md
-      - Interoperability Agent (Deprecated): interoperability.md
-  - Controls:
-      - Real-Time Control Agent: rt-control.md
+      - Message Bus Adapters: message-bus-adapter.md
+      - MQTT Protocol Proxy: mqtt.md
+      - NATS Protocol Proxy: nats.md
+      - OpenFMB Integration: openfmb.md
+  - Applications:
+      - Real-Time Control:
+          - Real-Time Control Agent: rt-control.md
+          - Novel Real-Time Control: novel-real-time-control.md
+          - MESA Modes: mesa-modes.md
       - Scheduler: scheduler.md
-  - OpenFMB: openfmb.md
+      - ES Control Integration: es-control-integration.md
+      - Grid Signals: grid-signals.md
+      - Forecaster Agent: forecaster-agent.md
+  - Deployment:
+      - der-control-fastlib Runtime: der-control-fastlib.md
+      - Deploying the Framework and Applications: deployment.md
   - Test Cases: test-cases.md
 #  - User Guide: user_guide.md

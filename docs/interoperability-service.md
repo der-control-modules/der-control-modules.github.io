@@ -2,12 +2,6 @@
 
 [Code & Installation Instructions](https://github.com/der-control-modules/interoperability-service){ .md-button }
 
-!!! note "Replaces the Interoperability Agent"
-    The Interoperability Service supersedes the VOLTTRON [Interoperability Agent](interoperability.md), which is
-    deprecated. Where the agent held a fixed, one-to-one mapping from IEC 61850-7-420 names to each target protocol,
-    the service maps every resource once through a common model and uses graph-based transformation pipelines to
-    convert between any pair of supported data formats.
-
 The Interoperability Service provides protocol-agnostic communication between control applications and
 Distributed Energy Resource (DER) devices. It provides templates for standards-based communication and reduces
 integration complexity:

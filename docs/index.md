@@ -54,9 +54,12 @@ As shown in [](#proposed-solution), it sits between DER/ESS devices and the cont
 * **Interoperable control and communication infrastructure**: the [Interoperability Service](interoperability-service.md)
   provides a standard, protocol-agnostic interface to DER devices by mapping protocol-specific data models through a
   common model, using protocol adapters, device drivers, data mapping, and a message bus.
-* **OpenFMB integration**: [message bus adapters](openfmb.md) connect the framework to OpenFMB systems over NATS and MQTT.
-* **Control framework**: the [Real-Time Control Agent](rt-control.md) and [Scheduler](scheduler.md) implement MESA modes,
-  novel PNNL-developed control functions, and user-defined controls with both scheduling and real-time capabilities.
+* **OpenFMB integration**: [message bus adapters](message-bus-adapter.md) connect the framework to OpenFMB systems
+  over [NATS](nats.md) and [MQTT](mqtt.md); see [OpenFMB Integration](openfmb.md).
+* **Applications**: the [Real-Time Control Agent](rt-control.md) implements [MESA modes](mesa-modes.md) and
+  [novel PNNL-developed control functions](novel-real-time-control.md); the [Scheduler](scheduler.md) provides day-ahead
+  dispatch; the [Grid Signals](grid-signals.md) and [Forecaster](forecaster-agent.md) agents supply price, CO₂, and load
+  inputs; and [ES Control Integration](es-control-integration.md) shares the algorithms with the ES-Control simulation tool.
 
 Figure: The proposed solution. The Interoperability Service provides protocol-agnostic integration between DER/ESS
 devices and control applications. {#proposed-solution}
@@ -71,13 +74,20 @@ and optimization of energy storage systems within a grid environment. This frame
 
 Each component is additionally described on its own page, as follows:
 
-* [Interoperability Service](interoperability-service.md)
-* [Real-time Control](rt-control.md)
-* [Scheduler](scheduler.md)
-* [OpenFMB](openfmb.md)
+| Component | Code |
+|---|---|
+| [Interoperability Service](interoperability-service.md) | [interoperability-service](https://github.com/der-control-modules/interoperability-service) |
+| [Message Bus Adapters](message-bus-adapter.md) | [message-bus-adapter](https://github.com/der-control-modules/message-bus-adapter) |
+| [MQTT Protocol Proxy](mqtt.md) | [lib-protocol-proxy-mqtt](https://github.com/der-control-modules/lib-protocol-proxy-mqtt) |
+| [NATS Protocol Proxy](nats.md) | [lib-protocol-proxy-nats](https://github.com/der-control-modules/lib-protocol-proxy-nats) |
+| [OpenFMB Integration](openfmb.md) | [openfmb_der](https://github.com/der-control-modules/openfmb_der) |
+| [Real-Time Control Agent](rt-control.md) ([MESA Modes](mesa-modes.md), [Novel Real-Time Control](novel-real-time-control.md)) | [realtime-control-agent](https://github.com/der-control-modules/realtime-control-agent) |
+| [Scheduler](scheduler.md) | [scheduler](https://github.com/der-control-modules/scheduler) |
+| [ES Control Integration](es-control-integration.md) | [ctrl-eval-engine](https://github.com/der-control-modules/ctrl-eval-engine) |
+| [Grid Signals](grid-signals.md) | [grid-signals](https://github.com/der-control-modules/grid-signals) |
+| [Forecaster Agent](forecaster-agent.md) | [load-forecaster](https://github.com/der-control-modules/load-forecaster) |
+| [der-control-fastlib Runtime](der-control-fastlib.md) | [der-control-fastlib](https://github.com/der-control-modules/der-control-fastlib) |
 
-!!! warning "Interoperability Agent deprecated"
-    The original VOLTTRON [Interoperability Agent](interoperability.md) has been deprecated and replaced by the
-    [Interoperability Service](interoperability-service.md). The agent page is retained for reference only.
-
-Links to code and installation instructions can be found at the top of each component page.
+Links to code and installation instructions can also be found at the top of each component page.
+A step-by-step guide to deploying the framework and applications on the der-control-fastlib runtime is
+given under [Deployment](deployment.md).

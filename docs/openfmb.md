@@ -1,4 +1,9 @@
-# OpenFMB
+# OpenFMB Integration
+
+[Message Bus Adapter](https://github.com/der-control-modules/message-bus-adapter){ .md-button }
+[MQTT Protocol Proxy](https://github.com/der-control-modules/lib-protocol-proxy-mqtt){ .md-button }
+[NATS Protocol Proxy](https://github.com/der-control-modules/lib-protocol-proxy-nats){ .md-button }
+[OpenFMB Test Tool](https://github.com/der-control-modules/openfmb_der){ .md-button }
 
 Message Bus is a critical middleware component in the distributed systems architecture on various systems
 and environments. Open Field Message Bus (open FMB) is an extensive framework for robust communication between
@@ -8,8 +13,9 @@ towards the grid utilities. For instance, open FMB can be used to translate trad
 and DNP3 and NATS.
 
 OpenFMB provides the interoperable messaging layer connecting heterogeneous DER devices, controllers, and
-applications. Integration of OpenFMB systems with this interoperability framework is provided by message bus adapters
-and by the [Interoperability Service](interoperability-service.md), as described in
+applications. Integration of OpenFMB systems with this interoperability framework is provided by the
+[Message Bus Adapters](message-bus-adapter.md) (over [MQTT](mqtt.md) or [NATS](nats.md)) and by the
+[Interoperability Service](interoperability-service.md), as described in
 [Integration with the Interoperability Framework](#integration-with-the-interoperability-framework) below.
 
 ## Architecture
@@ -59,7 +65,8 @@ The framework extends OpenFMB from basic message exchange toward scalable multi-
 As shown in [](#openfmb-integration), the Interoperability Service connects to OpenFMB buses through message bus
 adapters while continuing to talk directly to devices through drivers:
 
-* **Message bus adapters** connect the internal framework message bus with external OpenFMB buses over NATS and MQTT.
+* **[Message bus adapters](message-bus-adapter.md)** connect the internal framework message bus with external OpenFMB
+  buses over [NATS](nats.md) and [MQTT](mqtt.md).
   An OpenFMB device adapter on the external bus exposes SunSpec, MESA (DNP3), and IEEE 2030.5 DER devices as OpenFMB
   nodes, and OpenFMB applications on that bus can interact with the framework.
 * **Device drivers** enable direct point-to-point communication with controllers and DER devices over Modbus, DNP3,

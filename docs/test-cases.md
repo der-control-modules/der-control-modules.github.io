@@ -8,7 +8,7 @@ are further discussed in
 
 # Experimentation Results with VOLTTRON
 
-In the VOLTTRON platform, the Battery Energy Storage Systems (BESS) within the grid is integrated using modular agents for efficiency and cost-effectiveness. Multiple agents such as Forecaster, Grid Information, Real-time (MESA charge/Discharge Power mode) and Scheduler are the data source for the system with the help of external data sources include CO2 intensity, energy generation breakdown and electricity prices from APIs to indicate BESS operations.
+In the VOLTTRON platform, the Battery Energy Storage Systems (BESS) within the grid is integrated using modular agents for efficiency and cost-effectiveness. Multiple agents such as the [Forecaster](forecaster-agent.md), [Grid Signals](grid-signals.md), [Real-Time Control](rt-control.md) (MESA Charge/Discharge Power mode) and [Scheduler](scheduler.md) are the data source for the system with the help of external data sources include CO2 intensity, energy generation breakdown and electricity prices from APIs to indicate BESS operations.
 
 
 ## Key Features
