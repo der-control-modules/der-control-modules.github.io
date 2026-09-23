@@ -65,8 +65,10 @@ pip install git+https://github.com/der-control-modules/message-bus-adapter
 
 ### Interoperability Service
 
-Write the mappings and transforms for your devices to `$VOLTTRON_HOME/configs/interoperability.json` (see the
-[configuration example](interoperability-service.md#configuration)), then start the service:
+Write the mappings for your devices to `$VOLTTRON_HOME/configs/interoperability.json` (see the
+[configuration example](interoperability-service.md#configuration)). Transforms between IEC 61850-7-420,
+IEEE 1815.2, and SunSpec are [bundled with the service](interoperability-service.md#bundled-transforms) and loaded
+automatically, so `transforms` only needs entries for site-specific formats. Then start the service:
 
 ```shell
 interoperability-service --identity platform.presentation --host 127.0.0.1 --port 8000 \

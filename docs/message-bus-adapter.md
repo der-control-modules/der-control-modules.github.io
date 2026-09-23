@@ -32,8 +32,10 @@ broker. Messages then flow in both directions:
   message back to the requesting proxy, which publishes it on the remote bus.
 
 Because all topic resolution and payload transformation is delegated to the Interoperability Service, the adapter
-needs no protocol-specific mapping logic of its own. Adding a mapping or transform to the service is sufficient to
-expose a new resource across the bus boundary.
+needs no protocol-specific mapping logic of its own. The service's
+[bundled transforms](interoperability-service.md#bundled-transforms) between IEC 61850, IEEE 1815.2, and SunSpec
+are available immediately; adding a mapping or transform to the service is sufficient to expose a new resource
+across the bus boundary.
 
 ## Interface
 
