@@ -42,11 +42,14 @@ Add the `VOLTTRON_HOME` export to the shell profile so that every component find
 
 ```shell
 pip install git+https://github.com/der-control-modules/der-control-fastlib
+export JWT_SECRET_KEY=$(python -c "import secrets; print(secrets.token_urlsafe(32))")
 aems-server --host 127.0.0.1 --port 8000
 ```
 
-Leave the server running in its own terminal, or install it as a service (see [Running as services](#running-as-services)).
-Confirm it is up:
+The server binds to loopback by default and refuses a `JWT_SECRET_KEY` shorter than 32 bytes or equal to a published
+example; keep the generated value with the other secrets of the host. Leave the server running in its own terminal,
+install it as a service (see [Running as services](#running-as-services)), or run it as a container (see
+[Container deployment](#container-deployment)). Confirm it is up:
 
 ```shell
 curl http://127.0.0.1:8000/version
@@ -66,9 +69,12 @@ pip install git+https://github.com/der-control-modules/message-bus-adapter
 ### Interoperability Service
 
 Write the mappings for your devices to `$VOLTTRON_HOME/configs/interoperability.json` (see the
-[configuration example](interoperability-service.md#configuration)). Transforms between IEC 61850-7-420,
-IEEE 1815.2, and SunSpec are [bundled with the service](interoperability-service.md#bundled-transforms) and loaded
-automatically, so `transforms` only needs entries for site-specific formats. Then start the service:
+[configuration example](interoperability-service.md#configuration)). Transforms among IEC 61850-7-420,
+IEEE 1815.2, IEEE 2030.5, IEEE 1547.1, SunSpec, and OpenFMB are
+[bundled with the service](interoperability-service.md#bundled-transforms) and loaded automatically, so `transforms`
+only needs entries for site-specific formats. For a SunSpec or DNP3 device behind a platform driver, the
+[discovery tools](interoperability-service.md#device-formats-and-discovery) generate the driver registry, the device
+format, and the mappings from the device itself or from its point profile. Then start the service:
 
 ```shell
 interoperability-service --identity platform.presentation --host 127.0.0.1 --port 8000 \
@@ -149,6 +155,42 @@ curl "http://127.0.0.1:8000/config-store/list"           # one 'config' entry pe
 
 Run a listener (see [Running an agent](der-control-fastlib.md#running-an-agent)) subscribed to `devices/` and
 `record/` to watch device data, grid signals, forecasts, and the published schedule flow across the bus.
+
+## Container deployment
+
+The der-control-fastlib repository ships a hardened container stack under `docker/` as an alternative to installing the
+server on the host. The server image runs `aems-server` as an unprivileged user with all capabilities dropped, publishes
+port 8000 of the container on host port 5410, and joins an external bridge network named `derhost-net` that agent
+containers attach to. The `make` targets validate the publish address and the free port before starting anything:
+
+```shell
+git clone https://github.com/der-control-modules/der-control-fastlib
+cd der-control-fastlib
+make stack-up C=server                        # build and start the server, wait for /health
+make stack-status
+make stack-check EXPECTED=platform.presentation,der.rtcontrol   # confirm identities are connected
+make stack-down
+```
+
+The published port is bound to `127.0.0.1` unless `DERHOST_PUBLISH_HOST` is set on the `make` command line; the API
+has no authentication in front of it, so leave it on loopback unless the host network is trusted.
+
+The Interoperability Service has its own container, built from a clean checkout of the service next to the runtime
+repository:
+
+```shell
+export DER_AGENT_SRC=../interoperability-service      # path to the service checkout; this is also the default
+docker/interoperability-service/build.sh
+docker compose -f docker/interoperability-service/docker-compose.yml up -d --no-build
+```
+
+The build script exports only committed content from the service checkout, refuses a dirty working tree unless
+`ALLOW_DIRTY=1` is set, and stamps the commit hash into the image revision label. The compose file requires
+`DER_AGENT_SRC` to be set whenever it is loaded, which is why it is exported above rather than passed to the build
+script alone. The container joins `derhost-net`,
+reaches the server at `ws://derhost-server:8000`, runs read-only with a 64 MB `/tmp`, and is limited to 256 MB of
+memory. Store the service configuration through the server's configuration store as in step 3. The `make stack-up
+C=all` target starts only the server today; agent containers are started with their own compose files.
 
 ## Running as services
 

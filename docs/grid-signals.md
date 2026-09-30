@@ -56,10 +56,15 @@ The agent is configured through the VOLTTRON configuration store. Signal types a
 
 | Parameter                 | Description                                                                              |
 |---------------------------|------------------------------------------------------------------------------------------|
-| `real-time`               | If true, also publishes real-time CO₂ on `run_realtime_schedule`.                        |
+| `real-time`               | Boolean. If `true`, also publishes real-time CO₂ on `run_realtime_schedule`.             |
 | `method`                  | `API`.                                                                                   |
-| `API_information.API_key` | Electricity Maps API token. Keep it out of version control.                              |
+| `API_information.API_key` | Electricity Maps API token. Keep it out of version control. A placeholder value starting with `<` is treated as unset. |
 | `API_information.zone`    | Electricity Maps zone id (e.g. `US-NW-PACW`).                                            |
+
+The API token is sent to Electricity Maps in the `auth-token` request header, never as a URL parameter, and it is
+dropped if the API redirects to a different host. Each request has a 10-second connect and read timeout. The agent
+does not log the CO₂ configuration or request errors that could carry the token; at start-up it logs only the zone
+and whether a token is set.
 
 ### Example
 

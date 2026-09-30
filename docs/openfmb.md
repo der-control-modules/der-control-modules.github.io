@@ -24,7 +24,7 @@ Message buses provide asynchronous communication that performs message transfer 
 without a need for immediate response from the receivers as soon the sender sends the message. The components in
 the message bus are independent which supports scalability and system resilience. Generally, message bus works based
 on the publisher and subscriber. Open FMB is designed for three different layers, application, adapter and interface
-layers. The architechture is shown in [](#openfmb-architecture).
+layers. The architecture is shown in [](#openfmb-architecture).
 
 Figure: OpenFMB Architecture {#openfmb-architecture}
 
@@ -72,9 +72,13 @@ adapters while continuing to talk directly to devices through drivers:
 * **Device drivers** enable direct point-to-point communication with controllers and DER devices over Modbus, DNP3,
   and HTTP (IEEE 2030.5).
 * **Identifier mapping and data-model transformations**, provided by the mapping and transform registries of the
-  Interoperability Service, enable communication across all supported protocols. The service also includes
-  [pydantic models of the OpenFMB modules](interoperability-service.md#openfmb-data-models) (ESS, solar, meter,
-  breaker, switch, and others) with profile builders for constructing complete OpenFMB profiles.
+  Interoperability Service, enable communication across all supported protocols. OpenFMB is a first-class format in
+  the transform registry: the `openfmb.ess` and `openfmb.solar` formats carry ESS and solar profiles in the protobuf
+  JSON form that OpenFMB adapters publish, and
+  [bundled transforms](interoperability-service.md#bundled-transforms) map them to and from IEC 61850-7-420, through
+  which they reach SunSpec, IEEE 1815.2, IEEE 2030.5, and the IEEE 1547.1 view. The service also includes generated
+  [pydantic models of all 67 OpenFMB profiles](interoperability-service.md#openfmb-and-standards-data-models) with
+  profile builders for constructing complete OpenFMB profiles.
 * Both **publish/subscribe** and **direct device communication** are supported.
 
 Figure: OpenFMB integration. Message bus adapters (MQTT, NATS) connect the Interoperability Service to an external
