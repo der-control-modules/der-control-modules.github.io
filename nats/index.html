@@ -1003,10 +1003,12 @@
 <p>The NATS Protocol Proxy connects the <a href="../message-bus-adapter/">Message Bus Adapter</a> to a NATS server. NATS is a
 lightweight, high-performance publish/subscribe messaging system used as a transport in OpenFMB deployments; see
 <a href="../openfmb/">OpenFMB Integration</a>.</p>
-<p>The proxy is implemented in the <code>protocol-proxy-nats</code> Python package on top of the <code>protocol-proxy</code> library and the
-<a href="https://pypi.org/project/nats-py/">nats-py</a> client. Like the <a href="../mqtt/">MQTT proxy</a>, it runs as a separate process
-launched and supervised by the Message Bus Adapter's proxy manager. Because NATS provides an asynchronous client, the
-NATS proxy is built on the asyncio variant of the protocol proxy base class.</p>
+<p>The proxy is implemented in the <code>protocol-proxy-nats</code> Python package on top of the <code>protocol-proxy</code> library
+(version 2.0.0rc2 or later) and the <a href="https://pypi.org/project/nats-py/">nats-py</a> client. Like the
+<a href="../mqtt/">MQTT proxy</a>, it runs as a separate process launched and supervised by the Message Bus Adapter's proxy
+manager, through the generic launcher <code>python -m protocol_proxy.proxy &lt;module&gt;:&lt;class&gt;</code>. Because NATS provides an
+asynchronous client, the NATS proxy is built on the asyncio variant of the protocol proxy base class and is launched
+without gevent. The proxy logs through the standard module logger and no longer writes its own <code>protoproxy.log</code> file.</p>
 <h2 id="behavior">Behavior</h2>
 <ul>
 <li>On start-up the proxy connects to the configured NATS server(s) and registers itself with the adapter.</li>
@@ -1035,6 +1037,48 @@ NATS proxy is built on the asyncio variant of the protocol proxy base class.</p>
 <td>true</td>
 <td>string or list</td>
 <td>One or more NATS server URLs, for example <code>nats://nats.example.org:4222</code>.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>false</td>
+<td>string</td>
+<td>Connection name reported to the server.</td>
+</tr>
+<tr>
+<td><code>user</code>, <code>password</code></td>
+<td>false</td>
+<td>string</td>
+<td>Credentials for user/password authentication.</td>
+</tr>
+<tr>
+<td><code>nats_token</code></td>
+<td>false</td>
+<td>string</td>
+<td>Token for token authentication.</td>
+</tr>
+<tr>
+<td><code>connect_timeout</code></td>
+<td>false</td>
+<td>number</td>
+<td>Seconds to wait for the initial connection.</td>
+</tr>
+<tr>
+<td><code>max_reconnect_attempts</code></td>
+<td>false</td>
+<td>integer</td>
+<td>Reconnect attempts before giving up.</td>
+</tr>
+<tr>
+<td><code>reconnect_time_wait</code></td>
+<td>false</td>
+<td>number</td>
+<td>Seconds between reconnect attempts.</td>
+</tr>
+<tr>
+<td><code>tls</code></td>
+<td>false</td>
+<td>object</td>
+<td>TLS settings passed to the nats-py client.</td>
 </tr>
 </tbody>
 </table>

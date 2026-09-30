@@ -1019,7 +1019,7 @@ applications. Integration of OpenFMB systems with this interoperability framewor
 without a need for immediate response from the receivers as soon the sender sends the message. The components in
 the message bus are independent which supports scalability and system resilience. Generally, message bus works based
 on the publisher and subscriber. Open FMB is designed for three different layers, application, adapter and interface
-layers. The architechture is shown in <a href="#openfmb-architecture">Figure 1</a>.</p>
+layers. The architecture is shown in <a href="#openfmb-architecture">Figure 1</a>.</p>
 <p><figure id="openfmb-architecture"><img alt="" src="../images/openfmb-architecture-layers.png"><figcaption>Figure 1: OpenFMB Architecture </figcaption></figure></p>
 <h2 id="open-fmb-based-grid">Open-FMB Based Grid</h2>
 <p>The <strong>Open-FMB Based Grid</strong> is designed to enhance flexibility, interoperability, and efficiency in energy
@@ -1061,9 +1061,13 @@ adapters while continuing to talk directly to devices through drivers:</p>
 <li><strong>Device drivers</strong> enable direct point-to-point communication with controllers and DER devices over Modbus, DNP3,
   and HTTP (IEEE 2030.5).</li>
 <li><strong>Identifier mapping and data-model transformations</strong>, provided by the mapping and transform registries of the
-  Interoperability Service, enable communication across all supported protocols. The service also includes
-  <a href="../interoperability-service/#openfmb-data-models">pydantic models of the OpenFMB modules</a> (ESS, solar, meter,
-  breaker, switch, and others) with profile builders for constructing complete OpenFMB profiles.</li>
+  Interoperability Service, enable communication across all supported protocols. OpenFMB is a first-class format in
+  the transform registry: the <code>openfmb.ess</code> and <code>openfmb.solar</code> formats carry ESS and solar profiles in the protobuf
+  JSON form that OpenFMB adapters publish, and
+  <a href="../interoperability-service/#bundled-transforms">bundled transforms</a> map them to and from IEC 61850-7-420, through
+  which they reach SunSpec, IEEE 1815.2, IEEE 2030.5, and the IEEE 1547.1 view. The service also includes generated
+  <a href="../interoperability-service/#openfmb-and-standards-data-models">pydantic models of all 67 OpenFMB profiles</a> with
+  profile builders for constructing complete OpenFMB profiles.</li>
 <li>Both <strong>publish/subscribe</strong> and <strong>direct device communication</strong> are supported.</li>
 </ul>
 <p><figure id="openfmb-integration"><img alt="" src="../images/openfmb-integration.png"><figcaption>Figure 3: OpenFMB integration. Message bus adapters (MQTT, NATS) connect the Interoperability Service to an external OpenFMB bus, while device drivers provide direct access to SunSpec, MESA, and IEEE 2030.5 devices. </figcaption></figure></p>

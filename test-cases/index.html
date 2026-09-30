@@ -937,7 +937,7 @@ processor and connects it to:</p>
   SEL RTAC (e.g., RTAC 3555/3505), and WAGO grid edge controllers, each with PV, BESS, inverter, meter, feeder, relay,
   or load end devices behind them, communicating over standard protocols (Modbus, DNP3, IEC 61850).</li>
 <li><strong>Simulated end devices</strong>: software models of BESS, PV, wind, flexible load, and meters, reached directly from the
-  framework.</li>
+  framework; see <a href="#simulated-end-devices">Simulated end devices</a> below.</li>
 </ul>
 <p>Supported protocols in the test environment include Modbus (SunSpec), DNP3 (IEEE 1815.2), IEC 61850, IEEE 2030.5 (SEP),
 OpenFMB/MESA, and vendor-specific protocols via drivers. The goals of this effort are to:</p>
@@ -951,6 +951,88 @@ OpenFMB/MESA, and vendor-specific protocols via drivers. The goals of this effor
 </ul>
 <p><figure id="industry-engagement"><img alt="" src="../images/industry-engagement.png"><figcaption>Figure 2: Path to a protocol-agnostic, interoperable DER ecosystem: vendor engagement, device integration, interoperability testing, and framework refinement. </figcaption></figure></p>
 <p><figure id="testing-setup"><img alt="" src="../images/testing-setup.png"><figcaption>Figure 3: Ongoing interoperability test setup at PNNL. Path 1 reaches end devices through vendor gateways (Eaton, SEL RTAC, WAGO controller); Path 2 connects the framework directly to simulated end devices. </figcaption></figure></p>
+<h2 id="simulated-end-devices">Simulated end devices</h2>
+<p><a class="md-button" href="https://github.com/der-control-modules/simulated-end-devices">Code &amp; Installation Instructions</a></p>
+<p>The <code>simulated-end-devices</code> package provides the Path 2 devices of <a href="#testing-setup">Figure 3</a>: software models of DERs that
+expose the standard protocols the framework speaks, so that the Interoperability Service, drivers, and control
+applications can be exercised without hardware. One site configuration runs six devices behind a shared simulation
+clock and shared grid conditions:</p>
+<table>
+<thead>
+<tr>
+<th>Device id</th>
+<th>Model</th>
+<th>Protocol</th>
+<th>Default port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bess_modbus</code></td>
+<td>250 kWh / 125 kW battery</td>
+<td>SunSpec Modbus TCP (models 1, 701, 702, 704, 713)</td>
+<td>5021</td>
+</tr>
+<tr>
+<td><code>bess_dnp3</code></td>
+<td>500 kWh / 250 kW battery</td>
+<td>IEEE 1815.2 / MESA-DER (DNP3 outstation)</td>
+<td>20000</td>
+</tr>
+<tr>
+<td><code>bess_2030_5</code></td>
+<td>100 kWh / 50 kW battery</td>
+<td>IEEE 2030.5 (HTTP, <code>application/sep+xml</code>)</td>
+<td>8080</td>
+</tr>
+<tr>
+<td><code>pv</code></td>
+<td>100 kW DC / 90 kW AC PV array</td>
+<td>SunSpec Modbus TCP (models 1, 701, 702, 704)</td>
+<td>5022</td>
+</tr>
+<tr>
+<td><code>wind</code></td>
+<td>50 kW wind turbine</td>
+<td>SunSpec Modbus TCP (models 1, 701, 702, 704)</td>
+<td>5023</td>
+</tr>
+<tr>
+<td><code>meter</code></td>
+<td>Site meter at the point of common coupling</td>
+<td>SunSpec Modbus TCP (models 1, 203)</td>
+<td>5024</td>
+</tr>
+</tbody>
+</table>
+<p>The register maps, point indices, and resource trees follow the respective standards, so the transforms bundled with
+the <a href="../interoperability-service/#bundled-transforms">Interoperability Service</a> apply without site-specific rules:</p>
+<ul>
+<li><strong>SunSpec Modbus</strong> devices place the SunSpec model chain at holding register 40000. Model 704 is writable, so an
+  active-power limit (<code>WMaxLimPctEna</code>, <code>WMaxLimPct</code>) or a battery power set point (<code>WSetEna</code>, <code>WSetMod</code>, <code>WSet</code>) takes
+  effect on the next simulation step.</li>
+<li>The <strong>IEEE 1815.2</strong> battery accepts MESA-DER controls such as <code>DWGC_Mod</code> with <code>DWGC_GnWPctSpt</code>, <code>DAGC_Mod</code> with
+  <code>DAGC_WSpt</code>, and <code>DGEN_PrmConn</code> / <code>DGEN_PrmDscon</code>. It runs as a real OpenDNP3 outstation when <code>dnp3-python</code> is
+  installed (Linux); otherwise, or with <code>json_fallback: true</code>, the same point database is served as newline-delimited
+  JSON over TCP.</li>
+<li>The <strong>IEEE 2030.5</strong> battery serves the resource tree (<code>/dcap</code>, <code>/edev/1</code>, <code>/edev/1/der/1</code>, <code>/derp/1/derc</code>,
+  <code>/derp/1/dderc</code>, <code>/mup/1</code>, ...) and accepts posted <code>DERControl</code> objects with <code>opModTargetW</code>, <code>opModFixedW</code>,
+  <code>opModMaxLimW</code>, and <code>opModConnect</code>. It does not implement TLS or certificate-based device identity, which a
+  production IEEE 2030.5 deployment requires, and is therefore for testing only.</li>
+</ul>
+<p>Install and run the site in real time, or accelerated:</p>
+<pre><code class="language-shell">git clone https://github.com/der-control-modules/simulated-end-devices
+cd simulated-end-devices
+python -m venv .venv &amp;&amp; source .venv/bin/activate
+pip install .                                                # add ".[dnp3]" on Linux for a real DNP3 outstation
+simulated-devices run --config configs/site.yaml             # real time
+simulated-devices run --config configs/site.yaml --speed 60  # one simulated minute per second
+simulated-devices points --config configs/site.yaml          # dump register, point, and resource maps
+</code></pre>
+<p>A <code>docker compose up --build</code> in the repository starts the same site in containers. To connect the framework, point
+its SunSpec, DNP3, and IEEE 2030.5 drivers at the ports above and load <code>configs/interoperability-mappings.json</code> into
+the Interoperability Service; it registers the three batteries as canonical resources and adds IEC 61850 aliases
+<code>pnnl-sim/ess/1</code> to <code>pnnl-sim/ess/3</code> for them.</p>
 
 
 

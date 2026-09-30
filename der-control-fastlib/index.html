@@ -863,6 +863,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#security" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1026,6 +1037,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#security" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1073,32 +1095,41 @@ replaces the full VOLTTRON platform with two small pieces:</p>
 <ul>
 <li><strong>A server</strong> (<code>aems-server</code>) built on FastAPI that provides a WebSocket message bus for agent communication, a
   REST configuration store for agent settings, and health and version endpoints.</li>
-<li><strong>A client library</strong> (<code>aems.client</code>) that provides an <code>Agent</code> base class with the same programming interface as a
+<li><strong>A client library</strong> (<code>derhost.client</code>) that provides an <code>Agent</code> base class with the same programming interface as a
   VOLTTRON agent: <code>vip.pubsub</code>, <code>vip.rpc</code>, <code>vip.config</code>, <code>RPC.export</code>, <code>Core.receiver</code>, and <code>Core.periodic</code>.</li>
 </ul>
 <p>Each framework component and application runs as its own process, connects to the server over a WebSocket, and reads
 its configuration from the server's configuration store. Because the client API mirrors VOLTTRON's, the same agent
-code can be deployed on either runtime.</p>
+code can be deployed on either runtime. A compatibility layer also serves legacy agents written against the monolithic
+<code>volttron.platform</code> imports, including <code>volttron.platform.scheduling</code> (<code>cron</code>, <code>periodic</code>), so the
+<a href="../interoperability-service/">Interoperability Service</a> runs unchanged on either platform.</p>
+<div class="admonition note">
+<p class="admonition-title">Package rename</p>
+<p>The Python package was renamed from <code>aems</code> to <code>derhost</code> in September 2026 and the distribution is now named
+<code>der-control-fastlib</code>. Import paths in agent code change from <code>aems.</code> to <code>derhost.</code>; the <code>aems-server</code> console
+command is unchanged.</p>
+</div>
 <h2 id="installation">Installation</h2>
 <p>Requirements: Python 3.10 or higher and pip.</p>
 <pre><code class="language-shell">python -m venv ~/der-control
 source ~/der-control/bin/activate
 pip install git+https://github.com/der-control-modules/der-control-fastlib
 </code></pre>
-<p>For development, clone the repository and use the bundled helper script, which provides Poetry-like commands for
-pip (<code>install</code>, <code>install-prod</code>, <code>test</code>, <code>lint</code>, <code>format</code>, <code>build</code>, <code>check</code>):</p>
+<p>For development, clone the repository and use the <code>make</code> targets (<code>make dev-install</code>, <code>make test</code>, <code>make lint</code>,
+<code>make format</code>, <code>make check</code>, <code>make security</code>, <code>make build</code>):</p>
 <pre><code class="language-shell">git clone https://github.com/der-control-modules/der-control-fastlib
 cd der-control-fastlib
-./dev.py install
+make dev-install
 </code></pre>
 <h2 id="starting-the-server">Starting the server</h2>
 <pre><code class="language-shell">export VOLTTRON_HOME=~/.der-control
+export JWT_SECRET_KEY=$(python -c "import secrets; print(secrets.token_urlsafe(32))")
 aems-server --host 127.0.0.1 --port 8000
 </code></pre>
 <table>
 <thead>
 <tr>
-<th>Option</th>
+<th>Option / variable</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
@@ -1124,10 +1155,21 @@ aems-server --host 127.0.0.1 --port 8000
 <td><code>$VOLTTRON_HOME/aems_config_store</code></td>
 <td>Directory in which the configuration store keeps agent configurations.</td>
 </tr>
+<tr>
+<td><code>JWT_SECRET_KEY</code></td>
+<td>unset</td>
+<td>Secret used to sign tokens issued by <code>/authenticate</code>. The server rejects a value shorter than 32 bytes or equal to a published example, and <code>/authenticate</code> answers <code>503</code> while no key is configured.</td>
+</tr>
+<tr>
+<td><code>DERHOST_HOST</code></td>
+<td><code>127.0.0.1</code></td>
+<td>Bind address used by the <code>start-server</code> helper script.</td>
+</tr>
 </tbody>
 </table>
-<p>The server can also be started from Python with <code>aems.server.messagebus.start_server(host, port, config_store_dir)</code>.
-Once running, interactive API documentation is served at <code>http://&lt;host&gt;:&lt;port&gt;/docs</code>.</p>
+<p>The server can also be started from Python with
+<code>derhost.server.fastapi_message_bus.start_server(host, port, config_store_dir)</code>. Once running, interactive API
+documentation is served at <code>http://&lt;host&gt;:&lt;port&gt;/docs</code>.</p>
 <h2 id="server-api">Server API</h2>
 <table>
 <thead>
@@ -1162,6 +1204,10 @@ Once running, interactive API documentation is served at <code>http://&lt;host&g
 <td>Delete a configuration.</td>
 </tr>
 <tr>
+<td><code>GET /connections</code>, <code>GET /connections/{identity}</code></td>
+<td>Connected agent identities, used by the container stack's readiness check.</td>
+</tr>
+<tr>
 <td><code>GET /health</code>, <code>GET /health/{agent_id}</code></td>
 <td>Health status of all connected agents, or of one agent.</td>
 </tr>
@@ -1172,11 +1218,13 @@ Once running, interactive API documentation is served at <code>http://&lt;host&g
 </tbody>
 </table>
 <p>Agents subscribed to a configuration through <code>vip.config.subscribe</code> are notified when it is stored, updated, or
-deleted, so configurations can be changed at runtime without restarting the agent.</p>
+deleted, so configurations can be changed at runtime without restarting the agent. An identity may hold one
+connection at a time: a second connection attempt with an already-connected identity is refused and does not
+disturb the existing agent.</p>
 <h2 id="running-an-agent">Running an agent</h2>
-<p>An agent is a Python class derived from <code>aems.client.agent.Agent</code>. The <code>run_agent</code> helper turns it into a command
+<p>An agent is a Python class derived from <code>derhost.client.agent.Agent</code>. The <code>run_agent</code> helper turns it into a command
 line program that connects to the server:</p>
-<pre><code class="language-python">from aems.client.agent import Agent, Core, RPC, run_agent
+<pre><code class="language-python">from derhost.client.agent import Agent, Core, RPC, run_agent
 
 class Listener(Agent):
     @Core.receiver("onstart")
@@ -1221,15 +1269,59 @@ if __name__ == "__main__":
 </tr>
 </tbody>
 </table>
+<p>Cron schedules, whether given to <code>Core.periodic</code> as a cron string or built with <code>cron()</code> from the compatibility
+layer, follow the crontab convention with Sunday as day <code>0</code>. A pattern that can never match, such as February 31, or
+that combines February 29 with a day-of-week restriction, is rejected when the schedule is created rather than
+stalling the scheduler later.</p>
+<h2 id="containers">Containers</h2>
+<p>The repository provides a container stack under <code>docker/</code>, driven by <code>make</code> targets:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make stack-up C=server</code></td>
+<td>Build the server image and start it, waiting for <code>/health</code>.</td>
+</tr>
+<tr>
+<td><code>make stack-status</code></td>
+<td>Show the compose status of the stack.</td>
+</tr>
+<tr>
+<td><code>make stack-check EXPECTED=a,b</code></td>
+<td>Query <code>/connections</code> and confirm that the listed identities are connected.</td>
+</tr>
+<tr>
+<td><code>make stack-down</code></td>
+<td>Stop agent containers, then the server.</td>
+</tr>
+<tr>
+<td><code>docker/interoperability-service/build.sh</code></td>
+<td>Build the Interoperability Service image from the checkout named by <code>DER_AGENT_SRC</code>.</td>
+</tr>
+<tr>
+<td><code>docker/smoke.sh</code></td>
+<td>Developer end-to-end test: build, start, check, and remove the stack in an isolated project.</td>
+</tr>
+</tbody>
+</table>
+<p>The server container publishes port 8000 on host port 5410, bound to <code>DERHOST_PUBLISH_HOST</code> (default <code>127.0.0.1</code>),
+and joins the external network <code>derhost-net</code> that agent containers attach to. Containers run as an unprivileged user
+with all capabilities dropped. A worked deployment is given under
+<a href="../deployment/#container-deployment">Container deployment</a>.</p>
 <h2 id="security">Security</h2>
-<p>The server binds to <code>127.0.0.1</code> by default and does not implement authentication or TLS. For deployments in which
-agents connect from other hosts, run the server behind a reverse proxy with TLS termination and restrict access to
-the bus port at the network level.</p>
+<p>The server binds to <code>127.0.0.1</code> by default and does not authenticate WebSocket or REST callers. For deployments in
+which agents connect from other hosts, run the server behind a reverse proxy with TLS termination and restrict access
+to the bus port at the network level. Credentials and tokens are redacted from the server's log records.</p>
 <h2 id="releases">Releases</h2>
 <p>The repository uses GitHub Actions for continuous integration (tests on Python 3.10 to 3.12, formatting, linting,
 security scans) and for releases. Pushing a tag of the form <code>v1.2.3-alpha.1</code> from the <code>develop</code> branch creates a
 GitHub pre-release and notifies test servers; pushing a final tag <code>v1.2.3</code> from <code>main</code> creates a release and
-publishes the package. Tags are created with <code>./dev.py version alpha|beta|rc|release|minor|major</code>.</p>
+publishes the package.</p>
 
 
 

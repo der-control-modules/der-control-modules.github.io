@@ -1205,7 +1205,7 @@ forward 24 hours as a naive forecast.</p>
 <tbody>
 <tr>
 <td><code>real-time</code></td>
-<td>If true, also publishes real-time CO₂ on <code>run_realtime_schedule</code>.</td>
+<td>Boolean. If <code>true</code>, also publishes real-time CO₂ on <code>run_realtime_schedule</code>.</td>
 </tr>
 <tr>
 <td><code>method</code></td>
@@ -1213,7 +1213,7 @@ forward 24 hours as a naive forecast.</p>
 </tr>
 <tr>
 <td><code>API_information.API_key</code></td>
-<td>Electricity Maps API token. Keep it out of version control.</td>
+<td>Electricity Maps API token. Keep it out of version control. A placeholder value starting with <code>&lt;</code> is treated as unset.</td>
 </tr>
 <tr>
 <td><code>API_information.zone</code></td>
@@ -1221,6 +1221,10 @@ forward 24 hours as a naive forecast.</p>
 </tr>
 </tbody>
 </table>
+<p>The API token is sent to Electricity Maps in the <code>auth-token</code> request header, never as a URL parameter, and it is
+dropped if the API redirects to a different host. Each request has a 10-second connect and read timeout. The agent
+does not log the CO₂ configuration or request errors that could carry the token; at start-up it logs only the zone
+and whether a token is set.</p>
 <h3 id="example">Example</h3>
 <pre><code class="language-json">{
   "campus": "PNNL",

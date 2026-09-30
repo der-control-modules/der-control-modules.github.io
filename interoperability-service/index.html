@@ -400,6 +400,67 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Transform expression language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repeated-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repeated groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spread-entries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spread entries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing between chains
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-formats-and-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device formats and discovery
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -436,10 +497,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#openfmb-data-models" class="md-nav__link">
+  <a href="#openfmb-and-standards-data-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenFMB data models
+        OpenFMB and standards data models
       
     </span>
   </a>
@@ -1167,6 +1228,67 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Transform expression language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repeated-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repeated groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spread-entries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spread entries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing between chains
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-formats-and-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device formats and discovery
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1203,10 +1325,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#openfmb-data-models" class="md-nav__link">
+  <a href="#openfmb-and-standards-data-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenFMB data models
+        OpenFMB and standards data models
       
     </span>
   </a>
@@ -1281,35 +1403,37 @@ protocol-neutral identifier and receive it in whatever data format they understa
 standards-based communication and reduces integration complexity:</p>
 <ul>
 <li><strong>Reduces vendor-specific integration effort and deployment risk.</strong> Supports interoperability across protocols
-  including SunSpec Modbus, IEEE 1815.2 (DNP3 / MESA-DER), IEEE 2030.5, IEC 61850-7-420, and OpenFMB.</li>
+  including SunSpec Modbus, IEEE 1815.2 (DNP3 / MESA-DER), IEEE 2030.5, IEC 61850-7-420, the IEEE 1547.1
+  functional view, and OpenFMB.</li>
 <li><strong>Translates communication interfaces and data models</strong> to enable seamless device-to-application interaction
   regardless of the native protocol of each device.</li>
 <li><strong>Enables protocol-agnostic control and reference implementations.</strong> Control applications such as the
   <a href="../rt-control/">Real-Time Control Agent</a> and <a href="../scheduler/">Scheduler</a> are decoupled from the underlying
   communication protocols, ensuring reliable and consistent operation across multiple ESS and DER vendors.</li>
 </ul>
-<p>It does this with two cooperating pieces: a <strong>mapping engine</strong> that resolves a Uniquely Addressable Identifier (UAI)
-to the canonical resource that actually publishes the data, following aliases as needed, and a <strong>transform registry</strong>
-that holds declarative field-mapping rules between data formats and finds a chain of transforms from the format a
-resource is published in to the format a consumer asked for. Consumers call one RPC, <code>resolve</code>, and get back the
-resource definition plus the transform needed to read it in their preferred format.</p>
+<p>It does this with two cooperating components: a <strong>mapping engine</strong> that resolves a Uniquely Addressable Identifier
+(UAI) to the canonical resource that actually publishes the data, following aliases as needed, and a <strong>transform
+registry</strong> that holds declarative field-mapping rules between data formats and finds a chain of transforms from the
+format a resource is published in to the format a consumer asked for. Consumers call one RPC, <code>resolve</code>, and get back
+the resource definition plus the transform needed to read it in their preferred format.</p>
 <p>As illustrated in <a href="#interop-service-mapping">Figure 1</a>, the service acts as a translator of communication interfaces and data
-models between control stations or outstations that speak different protocols.</p>
+models between control stations or outstations that implement different protocols.</p>
 <p><figure id="interop-service-mapping"><img alt="" src="../images/interop-service-mapping.png"><figcaption>Figure 1: The Interoperability Service translates communication interfaces and data models between IEC 61850 IEDs, SunSpec Modbus, IEEE 1815.2 (DNP3), IEEE 2030.5 (HTTP), and OpenFMB nodes on a message bus. </figcaption></figure></p>
 <h2 id="graph-and-transform-based-interoperability">Graph- and Transform-Based Interoperability</h2>
 <p>Rather than maintaining a direct mapping between every pair of protocols, the service maps each protocol-specific
 data model once onto a common data model, as shown in <a href="#interop-service-graph-transform">Figure 2</a>. Transforms between data
 formats are stored as edges in a directed graph keyed by format name. A conversion from one format to another is
-found as the shortest path through this graph, so multi-stage transformations are composed automatically from reusable
-steps. For example, with the bundled IEEE 1815.2 to IEC 61850 and IEC 61850 to SunSpec transforms registered, a
-request for a DNP3 device's data in SunSpec form is served by chaining the two without any direct DNP3 to SunSpec
-rule set. This approach:</p>
+found as a path through this graph, so multi-stage transformations are composed automatically from reusable steps.
+For example, with the bundled IEEE 1815.2 to IEC 61850 and IEC 61850 to SunSpec transforms registered, a request for
+a DNP3 device's data in SunSpec form can be served by chaining the two without any direct DNP3 to SunSpec rule set.
+When several chains connect two formats, the registry picks the one that preserves the most information, as
+described under <a href="#choosing-between-chains">Choosing between chains</a>. This approach:</p>
 <ul>
 <li>Extends interoperability using graph-based mappings and transformation pipelines.</li>
 <li>Expands mappings between protocol-specific and common data models.</li>
 <li>Enables multi-stage transformations rather than maintaining direct mappings between every protocol pair.</li>
-<li>Supports reusable transformation paths across SunSpec Modbus, IEEE 1815.2 / DNP3, IEEE 2030.5, OpenFMB, and other
-  supported interfaces.</li>
+<li>Supports reusable transformation paths across SunSpec Modbus, IEEE 1815.2 / DNP3, IEEE 2030.5, IEEE 1547.1,
+  OpenFMB, and other supported interfaces.</li>
 <li>Reduces protocol-specific custom integration.</li>
 </ul>
 <p><figure id="interop-service-graph-transform"><img alt="" src="../images/interop-service-graph-transform.png"><figcaption>Figure 2: Generalized graph- and transform-based interoperability. Source and target protocols are mapped once through a common data model, and multi-stage transformations are derived from the transform graph. </figcaption></figure></p>
@@ -1335,7 +1459,7 @@ resource. Pass <code>strict=True</code> to require an exact match.</p>
 <tr>
 <td><code>canonical</code></td>
 <td><code>data_format</code>, <code>owner</code>, <code>publication_topic</code>, <code>rpc_topic</code></td>
-<td>The real source of the data. <code>publication_topic</code> is the message bus topic the data appears on; <code>rpc_topic</code> is where writes go.</td>
+<td>The authoritative source of the data. <code>publication_topic</code> is the message bus topic the data appears on; <code>rpc_topic</code> is where writes go.</td>
 </tr>
 <tr>
 <td><code>alias</code></td>
@@ -1345,18 +1469,21 @@ resource. Pass <code>strict=True</code> to require an exact match.</p>
 </tbody>
 </table>
 <p>Aliases can chain. When an alias is resolved the engine follows <code>references</code> until it reaches a canonical resource.
-If the caller did not name a target format, the alias's own <code>data_format</code> is used as the target, so an alias is a
-convenient way to say "this device, but as seen through IEC 61850."</p>
+If the caller did not name a target format, the alias's own <code>data_format</code> is used as the target, so an alias exposes
+an existing device as viewed through a different standard, such as IEC 61850.</p>
 <h3 id="formats-and-transforms">Formats and transforms</h3>
 <p>A <strong>transform</strong> is a declarative rule set that converts a message in one <code>input_format</code> to one in an
 <code>output_format</code>. Transforms are stored as edges in a directed graph keyed by format name. When a consumer asks for a
-resource in a format other than the one it is published in, the registry finds the shortest path through the graph
-and returns the ordered list of transform patterns along that path. If no path exists, an empty list is returned and a
-warning is logged.</p>
+resource in a format other than the one it is published in, the registry finds a chain of transforms through the
+graph and returns the ordered list of transform patterns along it. If the two formats are the same, the chain is
+empty. If a format is unknown or the two formats are not connected, the lookup fails with a <code>TransformNotFoundError</code>
+that says which of the two is the case.</p>
+<p>Formats are either <strong>hubs</strong> or <strong>leaves</strong>. The bundled standard formats are hubs and may appear in the middle of a
+chain. Any other format, such as a device's own flat point list, is a leaf by default: it only ever starts or ends a
+chain, so adding many device formats does not multiply the number of candidate chains between the standards.</p>
 <h2 id="bundled-transforms">Bundled transforms</h2>
-<p>The package ships with transform definitions between the IEC 61850-7-420, IEEE 1815.2 (MESA-DER), and SunSpec data
-models. They are loaded automatically at start-up as configuration defaults, so a deployment only needs to supply
-its device mappings. The format names used by the bundled files are:</p>
+<p>The package ships with transform definitions among the following formats. They are loaded automatically at start-up
+as configuration defaults, so a deployment only needs to supply its device mappings.</p>
 <table>
 <thead>
 <tr>
@@ -1379,45 +1506,47 @@ its device mappings. The format names used by the bundled files are:</p>
 </tr>
 <tr>
 <td><code>1815.2.outputs</code></td>
-<td>IEEE 1815.2 output points, grouped as <code>AO</code> and <code>BO</code></td>
+<td>IEEE 1815.2 output points, grouped as <code>AO</code> and <code>BO</code>, plus an optional <code>sequence</code> of point batches for curve writes</td>
+</tr>
+<tr>
+<td><code>2030.5</code></td>
+<td>IEEE 2030.5 resources keyed by resource then attribute (<code>DERCapability.rtgMaxW</code>)</td>
+</tr>
+<tr>
+<td><code>1547</code></td>
+<td>IEEE 1547.1 function groups and parameter names (<code>Nameplate</code>, <code>Volt-VAR</code>, ...)</td>
+</tr>
+<tr>
+<td><code>openfmb.ess</code>, <code>openfmb.solar</code></td>
+<td>OpenFMB v2.2 profiles for a storage or a solar device, in the protobuf JSON form that OpenFMB adapters publish</td>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>File</th>
-<th>Direction</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>1815.2_to_61850.json</code></td>
-<td><code>1815.2.inputs</code> to <code>61850</code>, and <code>1815.2.outputs</code> to <code>61850</code></td>
-</tr>
-<tr>
-<td><code>61850_to_1815.2.json</code></td>
-<td><code>61850</code> to <code>1815.2.inputs</code>, and <code>61850</code> to <code>1815.2.outputs</code></td>
-</tr>
-<tr>
-<td><code>61850_to_sunspec.json</code></td>
-<td><code>61850</code> to <code>sunspec</code></td>
-</tr>
-<tr>
-<td><code>sunspec_to_61850.json</code></td>
-<td><code>sunspec</code> to <code>61850</code></td>
-</tr>
-<tr>
-<td><code>sunspec_61850_curves.json</code></td>
-<td>Curve-point mappings between SunSpec models 705 to 712 and the IEC 61850 DER curve nodes (DVVR, DWVR, DVWC, ride-through). Draft: uses a per-point placeholder the expression language does not yet support.</td>
-</tr>
-</tbody>
-</table>
-<p>The IEEE 1815.2 files are generated from the MESA-DER PICS specification. Anything supplied through the
-configuration store is applied on top of these defaults, so a site can add its own formats or override individual
-rules.</p>
+<p>Every pairing of the first six formats ships as its own file named <code>&lt;input&gt;_to_&lt;output&gt;.json</code>; the IEEE 1815.2 files
+hold two definitions each, one for <code>1815.2.inputs</code> and one for <code>1815.2.outputs</code>. The two OpenFMB formats map to and
+from <code>61850</code> only (<code>openfmb_to_61850.json</code> and <code>61850_to_openfmb.json</code>) and reach every other protocol through that
+hub. The IEEE 1815.2 to IEC 61850 files are generated from the MESA-DER PICS; the IEEE 2030.5, IEEE 1547.1, and
+direct SunSpec to IEEE 1815.2 files are derived from a single cross-reference table of the IEEE 1547.1 mapping tables
+so that the two directions of each pair stay consistent.</p>
+<p>Conventions worth knowing when reading or writing messages in these formats:</p>
+<ul>
+<li><strong>Curves are lists.</strong> SunSpec curve points are the <code>Pt</code> list of the active stored curve, IEEE 2030.5 curves are
+  <code>DERCurve.&lt;curveType&gt;.CurveData</code>, and IEC 61850 curves are the <code>crvPts</code> list of the curve object. IEEE 1815.2
+  exposes curves through a single edit window (selector, type, point count, and up to 100 X,Y pairs); reading maps
+  the window into a mode's curve only when the selector matches, and writing produces an ordered <code>sequence</code> of
+  point batches for the driver to apply.</li>
+<li><strong>Schedules</strong> are carried as <code>DERControlList</code> entries in <code>2030.5</code> and as <code>FSCH.SchdEntr</code> entries in <code>61850</code>, and
+  map onto each other entry by entry. SunSpec and IEEE 1815.2 have no place for scheduled settings, so schedules do
+  not cross into them and the field map reports the loss.</li>
+<li><strong>OpenFMB</strong> messages are single profiles as an adapter publishes them (<code>essReading</code>, <code>essStatus</code>, <code>essControl</code>,
+  <code>essCapability</code>, or the solar equivalents). Readings map to <code>DECP.MMXU</code>, ratings to <code>DGEN</code>, <code>DSTO</code>, and
+  <code>DECP.VRef</code>, nameplate to <code>LPHD.PhyNam</code>, and control profiles onto <code>FSCH.SchdEntr</code>. Generated profiles lack the
+  message header (<code>mRID</code>, <code>messageTimeStamp</code>), which the publishing side must add.</li>
+</ul>
+<p>Anything supplied through the configuration store is applied on top of these defaults, so a site can add its own
+formats or override individual rules.</p>
 <h2 id="transform-expression-language">Transform expression language</h2>
-<p>Each value in a transform <code>pattern</code> is a small expression that says where in the input message the output field
+<p>Each value in a transform <code>pattern</code> is a compact expression that says where in the input message the output field
 comes from and what functions to apply along the way. Patterns are parsed with pyparsing and compiled to convtools
 pipelines, so they are evaluated as compiled Python rather than interpreted per message.</p>
 <pre><code>transform[&lt;path segment&gt;, &lt;path segment&gt;, ...](&lt;function&gt;(&lt;args&gt;), &lt;function&gt;(&lt;args&gt;), ...)
@@ -1429,7 +1558,8 @@ pipelines, so they are evaluated as compiled Python rather than interpreted per 
 <li>If the brackets are omitted, the path of output keys leading to the expression is used as the input path.</li>
 <li>The parenthesised functions are applied in order to the value found at that path. An empty pair of parentheses
   copies the value unchanged.</li>
-<li>Function arguments may be integers, quoted strings, bare identifiers, dotted paths (<code>phsA.mag</code>), or nested calls.</li>
+<li>Function arguments may be numbers (including signed, decimal, and scientific forms such as <code>0.001</code> or <code>-5</code>),
+  quoted strings, bare identifiers, dotted paths (<code>phsA.mag</code>), or nested calls.</li>
 </ul>
 <p>Patterns may be <strong>nested</strong>. A value that is an object is a group, and the output contains the same group structure.
 This is how the bundled files organise fields under IEC 61850 logical nodes or SunSpec model numbers. A value of
@@ -1464,6 +1594,40 @@ averaging the three phase voltage magnitudes while skipping any that are missing
   "LNV": "transform[DECP, MMXU, PNV](mean(phsA.mag, phsB.mag, phsC.mag))"
 }
 </code></pre>
+<h3 id="repeated-groups">Repeated groups</h3>
+<p>An output key ending in <code>[#]</code> produces a list. The group beneath it is evaluated once per element of a source list.
+Inside the group, a path segment written <code>Pt[#]</code> names the list and marks the iteration point; the segments after it
+are looked up in each element. Every path in the group must name the same list.</p>
+<pre><code class="language-json">{
+  "CurveData[#]": {
+    "#": "transform(take('705.Crv.0.ActPt'))",
+    "xvalue": "transform[705, Crv, 0, Pt[#], V]()",
+    "yvalue": "transform[705, Crv, 0, Pt[#], Var]()"
+  }
+}
+</code></pre>
+<p>The reserved <code>"#"</code> entry adjusts the source. Written without a path, as above, its functions are applied to the list
+the sibling paths name. Written with a path (<code>"#": "transform[DERCurve, opModVoltVar](as_list())"</code>) it supplies the
+list explicitly, and sibling paths then start with the bare segment <code>#</code>, meaning the current element. Written with
+functions only and no sibling naming a list (<code>"#": "transform(as_list())"</code>), it applies the functions to the
+enclosing element itself, which is how a flat message is wrapped into a one-element SunSpec <code>Crv</code> list.</p>
+<p>Paths without a marker inside a repeated group are resolved against the message root, so shared fields can be copied
+into every element. Groups nest, and a path starting with <code>#</code> always refers to the element of the group it is written
+in. A repeated group whose list is absent or empty is left out of the output. Several groups may feed one list by
+adding a label after the marker, for example <code>"sequence[#] volt-var"</code> and <code>"sequence[#] volt-watt"</code>; their lists are
+concatenated in pattern order. Mistakes such as a marker outside a repeated group or sibling paths naming different
+lists are reported when the definition is compiled.</p>
+<h3 id="spread-entries">Spread entries</h3>
+<p>A key starting with <code>*</code> (the rest of the key is a comment) holds an expression that produces a group; its fields are
+merged into the enclosing group at that position. This turns a list of curve points into numbered DNP3 point indices:</p>
+<pre><code class="language-json">{
+  "AO": {
+    "246": "transform[DERCurve, opModVoltVar, CurveData](count())",
+    "*points": "transform[DERCurve, opModVoltVar, CurveData](unpairs(249, xvalue, yvalue))"
+  }
+}
+</code></pre>
+<h3 id="functions">Functions</h3>
 <table id="transform-functions">
 <caption style="caption-side:bottom">Table 1: Transform functions </caption><thead>
 <tr>
@@ -1473,16 +1637,32 @@ averaging the three phase voltage magnitudes while skipping any that are missing
 </thead>
 <tbody>
 <tr>
-<td><code>multiple(n)</code></td>
-<td>Multiply by <code>n</code>. Has an inverse.</td>
+<td><code>multiple(n)</code>, <code>add(n)</code></td>
+<td>Multiply by or add <code>n</code>. Have inverses.</td>
 </tr>
 <tr>
-<td><code>add(n)</code></td>
-<td>Add <code>n</code>. Has an inverse.</td>
+<td><code>scale(n)</code></td>
+<td>Multiply by <code>n</code>, rounding away floating point noise to the decimal places of the operands. Has an inverse.</td>
 </tr>
 <tr>
 <td><code>scale_int(n)</code></td>
 <td>Multiply by <code>n</code> and cast to <code>int</code>. Has an inverse.</td>
+</tr>
+<tr>
+<td><code>scale_reg(path)</code></td>
+<td>Divide by the register at the quoted dotted <code>path</code>; an absent register leaves the value unchanged. Has an inverse.</td>
+</tr>
+<tr>
+<td><code>scale_reg_pow_10(path)</code></td>
+<td>Multiply by 10 to the power of the register at <code>path</code>, e.g. SunSpec scale factors: <code>scale_reg_pow_10('701.W_SF')</code>. Has an inverse.</td>
+</tr>
+<tr>
+<td><code>no_op()</code></td>
+<td>Copy the value unchanged.</td>
+</tr>
+<tr>
+<td><code>mod10k(reverse)</code>, <code>mod10k64(reverse)</code>, <code>mod10k48(reverse)</code></td>
+<td>Decode the ION and PM800 M10K register formats (four decimal digits per 16 bit register). Have inverses.</td>
 </tr>
 <tr>
 <td><code>scale_decimal_int_signed(n)</code></td>
@@ -1494,11 +1674,161 @@ averaging the three phase voltage magnitudes while skipping any that are missing
 </tr>
 <tr>
 <td><code>mean(path, ...)</code></td>
-<td>Average of several dotted-path fields of the current value, ignoring missing or <code>null</code> fields.</td>
+<td>Average of several dotted-path fields of the current value, ignoring missing or <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>take(n)</code></td>
+<td>Keep the first <code>n</code> elements of a list. <code>n</code> may be a quoted dotted path to the field holding the count, e.g. <code>take('705.Crv.0.ActPt')</code>.</td>
+</tr>
+<tr>
+<td><code>pairs(start, count, x, y)</code>, <code>unpairs(start, x, y)</code></td>
+<td>Convert between a flat, position-indexed array of alternating X and Y values and a list of <code>{x, y}</code> points (DNP3 curve points).</td>
+</tr>
+<tr>
+<td><code>series(count, start, spec, ...)</code>, <code>unseries(start, spec, ...)</code></td>
+<td>Convert between numbered flat driver points (<code>705_Crv1_Pt1_V</code>, ...) and a list of records.</td>
+</tr>
+<tr>
+<td><code>scale_fields(spec, ...)</code></td>
+<td>Multiply named fields of every record in a list by constants: <code>scale_fields('V:0.01', 'Var:0.01')</code>. Has an inverse.</td>
+</tr>
+<tr>
+<td><code>prefix_keys(prefix)</code></td>
+<td>Rename every key of a group by prefixing it, e.g. <code>{"244": 1}</code> to <code>{"AO_244": 1}</code>. Has an inverse.</td>
+</tr>
+<tr>
+<td><code>count()</code></td>
+<td>Number of elements in a list or group.</td>
+</tr>
+<tr>
+<td><code>as_list()</code></td>
+<td>Wrap the value in a one-element list.</td>
+</tr>
+<tr>
+<td><code>const(v)</code></td>
+<td>Replace the value with the literal <code>v</code> (only emitted when the source is present).</td>
+</tr>
+<tr>
+<td><code>when(path, v)</code>, <code>when_equal(path_a, path_b)</code></td>
+<td>Pass the value through only when the field at <code>path</code> equals <code>v</code>, or when both fields are present and equal; otherwise treat it as missing.</td>
+</tr>
+<tr>
+<td><code>approx(f)</code></td>
+<td>Copy the value unchanged but record that only a fraction <code>f</code> of its meaning carries over (see <a href="#choosing-between-chains">Choosing between chains</a>).</td>
 </tr>
 </tbody>
 </table>
-<p>Functions that define an inverse are intended to support automatic generation of reverse transforms in the future.</p>
+<p>Functions after a guard such as <code>when</code> are skipped once the value has become missing. Paths given to <code>take</code>, <code>when</code>,
+<code>when_equal</code>, <code>scale_reg</code>, and <code>scale_reg_pow_10</code> are resolved against the element enclosing the expression; a path
+starting with <code>/</code> is resolved from the message root wherever it appears. Functions that define an inverse are
+intended to support automatic generation of reverse transforms in the future.</p>
+<h2 id="choosing-between-chains">Choosing between chains</h2>
+<p>When more than one chain of transforms connects two formats, the registry picks the one that preserves the most
+information, not the shortest. Each registered pattern is analysed, without running it, into a <strong>field map</strong>: which
+source fields reach which target fields, and with what <strong>fidelity</strong>. Fidelity is 1 for a plain copy or an invertible
+function and lower for functions that lose information: <code>scale_int</code> and <code>take</code> 0.9, guards such as <code>when_equal</code> 0.7,
+<code>mean</code> 0.5, <code>count</code> 0.3, and <code>const</code> 0. An author can mark an approximate mapping with <code>approx(f)</code>. Field maps compose
+along a chain and fidelities multiply, so a field dropped at the first hop cannot reappear later.</p>
+<p>A lookup enumerates every chain of up to four hops whose intermediate formats are hubs, scores each on the same set
+of source fields (the fields a resource publishes if the caller supplies them, otherwise every source field any
+candidate's first step reads), and keeps the chain with the highest <strong>retention</strong>, the fraction of source fields that
+reach the target. Ties go to fewer hops. Each edge also carries an informational weight, <code>-ln(retention) + 0.01</code>,
+measured against the format's full field universe, which comes from the generated model packages for SunSpec,
+IEEE 1815.2, IEEE 2030.5, and OpenFMB, from the <code>formats</code> configuration for site-specific formats, or failing both
+from the fields the registered transforms mention. The <code>score_transform</code> RPC exposes the chosen path and its
+retention. A <code>lossiness</code> value on a transform definition overrides the measured retention, for example from an
+empirical round trip.</p>
+<h2 id="device-formats-and-discovery">Device formats and discovery</h2>
+<p>A platform driver publishes a device as a flat <code>{point name: value}</code> message. That flat point list is a format of
+its own: a leaf in the transform graph that maps onto one protocol and reaches the others through it. The
+<code>interoperability.discovery</code> package generates the configuration for such a device format; nothing at runtime
+depends on it.</p>
+<p><strong>SunSpec devices.</strong> When a registry names each point after the SunSpec path it holds (<code>701_W</code>, <code>704_PFWInj_PF</code>,
+<code>705_Crv1_Pt3_Var</code>, with a 1-based index on repeating groups), the two transforms between the device format and
+<code>sunspec</code> and the <code>formats</code> declaration are derived from the point names alone, validated against the SunSpec model
+classes. Where the SunSpec scale factors are applied is a build-time choice, <code>scaling</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transform</code></td>
+<td>The driver publishes raw registers including the <code>_SF</code> points; reads apply <code>scale_reg_pow_10</code> and writes bake the discovered factor in as a constant.</td>
+</tr>
+<tr>
+<td><code>driver</code></td>
+<td>The driver applies the factors through a <code>Transform</code> column in its registry; the <code>_SF</code> points are omitted and the transforms pass values through unchanged.</td>
+</tr>
+</tbody>
+</table>
+<p>The SunSpec discovery tool scans a device over Modbus TCP or RTU, or reads a pysunspec2 JSON device description
+offline, and writes the whole configuration set: a registry for the <code>modbus</code> driver, a registry for the <code>fake</code>
+driver with the discovered values as starting values, the device configurations for both, the service configuration,
+and a <code>vctl</code> script that stores them. It requires the optional <code>discovery</code> extra, which installs pysunspec2.</p>
+<pre><code class="language-shell">pip install "interoperability-service[discovery] @ git+https://github.com/der-control-modules/interoperability-service"
+python -m interoperability.discovery.sunspec --host 10.0.0.21 --unit 1 --scaling driver --out build/
+python -m interoperability.discovery.sunspec --file device.json --out build/   # offline
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--host</code>, <code>--port</code>, <code>--unit</code></td>
+<td><code>502</code>, <code>1</code></td>
+<td>Modbus TCP target. <code>--serial</code> selects Modbus RTU; <code>--file</code> reads a device description instead.</td>
+</tr>
+<tr>
+<td><code>--out</code></td>
+<td>required</td>
+<td>Directory for the generated files.</td>
+</tr>
+<tr>
+<td><code>--scaling</code></td>
+<td><code>transform</code></td>
+<td><code>transform</code> or <code>driver</code>, as above.</td>
+</tr>
+<tr>
+<td><code>--format-name</code></td>
+<td><code>sunspec_device</code></td>
+<td>Name of the generated device format.</td>
+</tr>
+<tr>
+<td><code>--device-topic</code></td>
+<td><code>devices/site1/feeder1/inverter</code></td>
+<td>Topic the driver publishes the device on.</td>
+</tr>
+<tr>
+<td><code>--uai</code></td>
+<td><code>site1/inverter</code></td>
+<td>UAI of the canonical resource, <code>/</code>-separated.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>IEEE 1815.2 devices.</strong> The same machinery serves an outstation behind the <code>dnp3</code> driver, with point names
+<code>&lt;table&gt;_&lt;index&gt;</code> (<code>AI_297</code>, <code>AO_217</code>, <code>BI_93</code>) validated against the service's IEEE 1815.2 point registry. The
+device format maps onto <code>1815.2.inputs</code> and <code>1815.2.outputs</code>, and back from <code>1815.2.outputs</code> only, since inputs are
+read-only on a device. DNP3 has no self-description, so the discovery tool takes the point set from a test-tool
+profile file or any index listing and writes the same configuration set:</p>
+<pre><code class="language-shell">python -m interoperability.discovery.dnp3 --profile mandatory_1547.json --out build/ \
+    --outstation-ip 10.0.0.22 --port 20000
+</code></pre>
+<p>It accepts <code>--scaling</code>, <code>--format-name</code> (default <code>dnp3_device</code>), <code>--device-topic</code>, and <code>--uai</code> as the SunSpec tool
+does. Multipliers and offsets come from the profile, so both scaling modes work without device discovery; the current
+<code>dnp3</code> driver applies neither, so <code>transform</code> is the mode that works today.</p>
+<p><strong>IEEE 2030.5.</strong> There is no register device to discover: the VOLTTRON 2030.5 agent mirrors a driver device to a
+2030.5 server through a point map of <code>Object::property</code> rows. <code>interoperability.discovery.point_maps</code> generates that
+map for any device format that reaches <code>2030.5</code> from the composed field map of the chosen chain. Messages from a
+2030.5 source are already in the service's <code>2030.5</code> format and need no device format.</p>
 <h2 id="interface">Interface</h2>
 <p>The service runs under the VIP identity <code>platform.presentation</code> and exposes the following interface on the message bus.</p>
 <table>
@@ -1515,19 +1845,25 @@ averaging the three phase voltage magnitudes while skipping any that are missing
 <td><code>resolve(uai, as_format=None, strict=False)</code></td>
 <td>RPC</td>
 <td>dict</td>
-<td>Resolves a UAI to its canonical resource. When <code>as_format</code> is given, the result also includes <code>target_format</code> and <code>transform</code>, the ordered list of transform patterns from the resource's <code>data_format</code> to <code>as_format</code>. Returns <code>{}</code> if nothing canonical is found.</td>
+<td>Resolves a UAI to its canonical resource. When <code>as_format</code> is given, the result also includes <code>target_format</code> and <code>transform</code>, the ordered list of transform patterns from the resource's <code>data_format</code> to <code>as_format</code> (empty when they are the same). Returns <code>{}</code> if nothing canonical is found and fails with <code>TransformNotFoundError</code> if the resource cannot be converted.</td>
 </tr>
 <tr>
 <td><code>lookup_transform(input_format, output_format)</code></td>
 <td>RPC</td>
 <td>list of pattern dicts</td>
-<td>The transform chain between two formats, or <code>[]</code> if there is no path or a format has never been registered.</td>
+<td>The transform chain between two formats. An empty list means no transform is needed. When no chain exists the call fails with <code>TransformNotFoundError</code>, saying whether a format is unknown or the formats are not connected.</td>
 </tr>
 <tr>
-<td><code>register_transform(input_format, output_format, pattern)</code></td>
+<td><code>score_transform(input_format, output_format, fields=None)</code></td>
 <td>RPC</td>
-<td>none</td>
-<td>Adds a transform edge to the registry at runtime.</td>
+<td>dict</td>
+<td>The chain <code>lookup_transform</code> would choose, as <code>path</code> (the formats passed through) and <code>retention</code> (the fraction of source fields that reach the end), scored over <code>fields</code> if given.</td>
+</tr>
+<tr>
+<td><code>register_transform(input_format, output_format, pattern, update=False, lossiness=None)</code></td>
+<td>RPC</td>
+<td>bool</td>
+<td>Adds a transform edge at runtime. If the pair already has a different transform it is kept, with a warning, unless <code>update</code> is true; registering the same pattern again is a no-op. Malformed patterns are rejected. Returns whether the registry changed.</td>
 </tr>
 <tr>
 <td><code>mapper/update</code></td>
@@ -1539,7 +1875,8 @@ averaging the three phase voltage magnitudes while skipping any that are missing
 </table>
 <h2 id="configuration">Configuration</h2>
 <p>The service reads a single <code>config</code> entry from the configuration store with two top-level lists, <code>mappings</code> and
-<code>transforms</code>. Because the bundled transforms are loaded as defaults, a typical configuration contains only mappings:</p>
+<code>transforms</code>, and an optional <code>formats</code> object. Because the bundled transforms are loaded as defaults, a typical
+configuration contains only mappings:</p>
 <pre><code class="language-json">{
   "mappings": [
     {
@@ -1562,12 +1899,15 @@ averaging the three phase voltage magnitudes while skipping any that are missing
       }
     }
   ],
+  "formats": {
+    "acme_inverter": { "hub": false, "fields": ["W", "V.PhaseA", "V.PhaseB", "V.PhaseC"] }
+  },
   "transforms": []
 }
 </code></pre>
 <p>In this example, an agent that resolves the alias <code>["site1", "pv_61850"]</code> receives the canonical SunSpec resource for
 the inverter together with the bundled <code>sunspec</code> to <code>61850</code> transform, without needing to know which protocol the
-device speaks.</p>
+device implements.</p>
 <p>Each entry in <code>mappings</code>:</p>
 <table>
 <thead>
@@ -1628,14 +1968,43 @@ device speaks.</p>
 <td>object</td>
 <td>Output field name to transform expression, possibly nested.</td>
 </tr>
+<tr>
+<td><code>lossiness</code></td>
+<td>no</td>
+<td>number</td>
+<td>Overrides the measured loss of this transform, 0 (lossless) to 1, for example from an empirical round trip.</td>
+</tr>
 </tbody>
 </table>
-<p>Store the configuration with:</p>
+<p>Each entry in <code>formats</code> is keyed by format name:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hub</code></td>
+<td>boolean</td>
+<td>Whether transform chains may pass through this format. Bundled standard formats are hubs; anything else is a leaf by default.</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td>list of strings</td>
+<td>The fields the format can carry, as dotted paths with <code>*</code> for repeating groups. Used to measure how much of the format a transform covers.</td>
+</tr>
+</tbody>
+</table>
+<p>Configuration definitions are authoritative: a transform for a pair that already exists replaces the earlier one, and
+a pair defined twice in one configuration keeps the first and logs a warning. Store the configuration with:</p>
 <pre><code class="language-shell">vctl config store platform.presentation config path/to/config.json
 </code></pre>
 <h2 id="consuming-a-resource-from-another-agent">Consuming a resource from another agent</h2>
-<p><code>interoperability.resource.ResourceData</code> is a client-side helper used by the <a href="../message-bus-adapter/">Message Bus Adapter</a>
-and available to any agent. It resolves a UAI through the service, compiles the returned transform, subscribes to the
+<p><code>interoperability.resource.ResourceData</code> is a client-side helper used by the
+<a href="../message-bus-adapter/">Message Bus Adapter</a> and available to any agent. It resolves a UAI through the service, compiles the returned transform, subscribes to the
 canonical publication topic, and delivers transformed payloads to a callback under the caller's own local topic:</p>
 <pre><code class="language-python">from interoperability.resource import ResourceData
 
@@ -1646,14 +2015,21 @@ resource = ResourceData.lookup(self, ("site1", "feeder2", "pv_inverter"))
 if resource:
     resource.subscribe(on_data)
 </code></pre>
-<p><code>lookup</code> accepts a tuple, a list, or a delimited string (default delimiter <code>/</code>).</p>
-<h2 id="openfmb-data-models">OpenFMB data models</h2>
-<p>The package includes pydantic models for each OpenFMB module (breaker, capacitor bank, circuit segment service,
-environment, ESS, EVSE, generation, interconnection, load, meter, recloser, regulator, reserve, resource, solar,
-switch, and common types), together with keyword-only profile builders for constructing complete OpenFMB profiles and
-sample generators for solar reading and status profiles. These models are the groundwork for an <code>openfmb</code> data format
-in the transform registry and are used with the <a href="../message-bus-adapter/">Message Bus Adapters</a> for
-<a href="../openfmb/">OpenFMB Integration</a>. They are not yet wired into the bundled transforms.</p>
+<p><code>lookup</code> accepts a tuple, a list, or a delimited string (default delimiter <code>/</code>). It returns <code>None</code> when the UAI does
+not resolve to a canonical resource, and also when it resolves but no transform can convert the resource into the
+requested format; the reason is logged as a warning. A resource that is already in the requested format is delivered
+unchanged.</p>
+<h2 id="openfmb-and-standards-data-models">OpenFMB and standards data models</h2>
+<p>The package includes generated pydantic models for the OpenFMB v2.2 protobuf modules (breaker, capacitor bank,
+circuit segment service, environment, ESS, EVSE, generation, interconnection, load, meter, recloser, regulator,
+reserve, resource, solar, switch, and common types). A <code>PROFILES</code> dictionary maps the 67 OpenFMB profile names to
+their classes. The classes follow protobuf's JSON mapping, which is what OpenFMB adapters publish, and reject unknown
+fields so that a message of the wrong shape fails validation rather than silently matching nothing. Hand-written
+profile builders construct complete DER profiles. These models back the <code>openfmb.ess</code> and <code>openfmb.solar</code> transform
+formats and are used with the <a href="../message-bus-adapter/">Message Bus Adapters</a> for <a href="../openfmb/">OpenFMB Integration</a>.</p>
+<p>Sibling packages provide the same treatment for SunSpec (one module per model id), IEEE 1815.2 (point enumerations
+and function-group profiles from the IEEE 1815.2 test tool), and IEEE 2030.5 (all schema types of <code>sep.xsd</code>). They
+supply the field universes used when scoring transform chains and validate point names during device discovery.</p>
 <h2 id="integration-with-control-applications-and-openfmb">Integration with Control Applications and OpenFMB</h2>
 <p>Publish/subscribe messaging provides normalized device data to control applications, which consume the published
 data structures and issue control commands back through the framework, enabling coordinated actuation of multiple
@@ -1663,20 +2039,22 @@ while device drivers provide direct point-to-point communication with controller
 <h2 id="status-and-known-limitations">Status and known limitations</h2>
 <p>The service is at an early stage. Current limitations:</p>
 <ul>
-<li><strong>Array and curve mappings are not supported.</strong> There is no way to express "for each element of a list" in a
-  pattern, so the SunSpec curve-point mappings are drafts.</li>
-<li><strong>Transform weighting.</strong> All transform edges have weight 0, so path selection is by hop count only. Weighting by
-  lossiness is a planned improvement.</li>
-<li><strong>Inverse transforms</strong> are attached to several functions but reverse pipelines are not yet generated automatically.</li>
-<li><strong>No default mappings ship with the package</strong>, so UAIs must be supplied through the configuration store or the
-  <code>mapper/update</code> topic.</li>
+<li><strong>Transform weighting is measured from the patterns alone.</strong> It does not know when a mapping is semantically
+  approximate unless the author marks it with <code>approx()</code>, and there is no empirical round-trip check yet; the
+  <code>lossiness</code> override exists so that one can be applied when it is written.</li>
+<li><strong>Inverse transforms</strong> are attached to most functions but reverse pipelines are not yet generated automatically.</li>
+<li><strong>No default mappings ship with the package</strong>, so UAIs must be supplied through the configuration store, the
+  <code>mapper/update</code> topic, or the discovery tools.</li>
+<li><strong>Agent-level tests</strong> of the RPC and pubsub behavior are not yet in place.</li>
 </ul>
 <h2 id="requirements">Requirements</h2>
 <ul>
 <li>Python &gt;= 3.10</li>
-<li>Modular Eclipse VOLTTRON (<code>volttron-core</code> &gt;= 2.0.0rc30). The agent also falls back to the monolithic
-  <code>volttron.platform</code> imports if <code>volttron-core</code> is not installed.</li>
+<li>Modular Eclipse VOLTTRON (<code>volttron-core</code> &gt;= 2.0.0rc30) or the
+  <a href="../der-control-fastlib/">der-control-fastlib runtime</a>. The agent falls back to the monolithic <code>volttron.platform</code>
+  imports if <code>volttron-core</code> is not installed.</li>
 <li>Runtime libraries, installed with the package: <code>convtools</code>, <code>networkx</code>, <code>pydantic</code> 2, <code>pyparsing</code>, <code>treelib</code></li>
+<li>Optional <code>discovery</code> extra for the SunSpec discovery tool: <code>pysunspec2</code></li>
 </ul>
 <h2 id="installation">Installation</h2>
 <p>Before installing, VOLTTRON should be installed and running and its virtual environment should be active.
@@ -1688,7 +2066,8 @@ vctl config store platform.presentation config path/to/config.json
 vctl status
 </code></pre>
 <p>Other agents look the service up by the identity <code>platform.presentation</code>, so keep that identity unless the callers are
-also changed. For deployment on the der-control-fastlib runtime, see <a href="../deployment/">Deployment</a>.</p>
+also changed. For deployment on the der-control-fastlib runtime, including as a container, see
+<a href="../deployment/">Deployment</a>.</p>
 
 
 

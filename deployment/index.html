@@ -969,6 +969,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#container-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#running-as-services" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1182,6 +1193,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#container-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#running-as-services" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1304,10 +1326,13 @@ mkdir -p $VOLTTRON_HOME/configs
 <p>Add the <code>VOLTTRON_HOME</code> export to the shell profile so that every component finds the same runtime directory.</p>
 <h2 id="2-install-the-runtime-and-start-the-server">2. Install the runtime and start the server</h2>
 <pre><code class="language-shell">pip install git+https://github.com/der-control-modules/der-control-fastlib
+export JWT_SECRET_KEY=$(python -c "import secrets; print(secrets.token_urlsafe(32))")
 aems-server --host 127.0.0.1 --port 8000
 </code></pre>
-<p>Leave the server running in its own terminal, or install it as a service (see <a href="#running-as-services">Running as services</a>).
-Confirm it is up:</p>
+<p>The server binds to loopback by default and refuses a <code>JWT_SECRET_KEY</code> shorter than 32 bytes or equal to a published
+example; keep the generated value with the other secrets of the host. Leave the server running in its own terminal,
+install it as a service (see <a href="#running-as-services">Running as services</a>), or run it as a container (see
+<a href="#container-deployment">Container deployment</a>). Confirm it is up:</p>
 <pre><code class="language-shell">curl http://127.0.0.1:8000/version
 curl http://127.0.0.1:8000/health
 </code></pre>
@@ -1319,9 +1344,12 @@ pip install git+https://github.com/der-control-modules/message-bus-adapter
 </code></pre>
 <h3 id="interoperability-service">Interoperability Service</h3>
 <p>Write the mappings for your devices to <code>$VOLTTRON_HOME/configs/interoperability.json</code> (see the
-<a href="../interoperability-service/#configuration">configuration example</a>). Transforms between IEC 61850-7-420,
-IEEE 1815.2, and SunSpec are <a href="../interoperability-service/#bundled-transforms">bundled with the service</a> and loaded
-automatically, so <code>transforms</code> only needs entries for site-specific formats. Then start the service:</p>
+<a href="../interoperability-service/#configuration">configuration example</a>). Transforms among IEC 61850-7-420,
+IEEE 1815.2, IEEE 2030.5, IEEE 1547.1, SunSpec, and OpenFMB are
+<a href="../interoperability-service/#bundled-transforms">bundled with the service</a> and loaded automatically, so <code>transforms</code>
+only needs entries for site-specific formats. For a SunSpec or DNP3 device behind a platform driver, the
+<a href="../interoperability-service/#device-formats-and-discovery">discovery tools</a> generate the driver registry, the device
+format, and the mappings from the device itself or from its point profile. Then start the service:</p>
 <pre><code class="language-shell">interoperability-service --identity platform.presentation --host 127.0.0.1 --port 8000 \
     --config $VOLTTRON_HOME/configs/interoperability.json
 </code></pre>
@@ -1377,6 +1405,33 @@ curl "http://127.0.0.1:8000/config-store/list"           # one 'config' entry pe
 </code></pre>
 <p>Run a listener (see <a href="../der-control-fastlib/#running-an-agent">Running an agent</a>) subscribed to <code>devices/</code> and
 <code>record/</code> to watch device data, grid signals, forecasts, and the published schedule flow across the bus.</p>
+<h2 id="container-deployment">Container deployment</h2>
+<p>The der-control-fastlib repository ships a hardened container stack under <code>docker/</code> as an alternative to installing the
+server on the host. The server image runs <code>aems-server</code> as an unprivileged user with all capabilities dropped, publishes
+port 8000 of the container on host port 5410, and joins an external bridge network named <code>derhost-net</code> that agent
+containers attach to. The <code>make</code> targets validate the publish address and the free port before starting anything:</p>
+<pre><code class="language-shell">git clone https://github.com/der-control-modules/der-control-fastlib
+cd der-control-fastlib
+make stack-up C=server                        # build and start the server, wait for /health
+make stack-status
+make stack-check EXPECTED=platform.presentation,der.rtcontrol   # confirm identities are connected
+make stack-down
+</code></pre>
+<p>The published port is bound to <code>127.0.0.1</code> unless <code>DERHOST_PUBLISH_HOST</code> is set on the <code>make</code> command line; the API
+has no authentication in front of it, so leave it on loopback unless the host network is trusted.</p>
+<p>The Interoperability Service has its own container, built from a clean checkout of the service next to the runtime
+repository:</p>
+<pre><code class="language-shell">export DER_AGENT_SRC=../interoperability-service      # path to the service checkout; this is also the default
+docker/interoperability-service/build.sh
+docker compose -f docker/interoperability-service/docker-compose.yml up -d --no-build
+</code></pre>
+<p>The build script exports only committed content from the service checkout, refuses a dirty working tree unless
+<code>ALLOW_DIRTY=1</code> is set, and stamps the commit hash into the image revision label. The compose file requires
+<code>DER_AGENT_SRC</code> to be set whenever it is loaded, which is why it is exported above rather than passed to the build
+script alone. The container joins <code>derhost-net</code>,
+reaches the server at <code>ws://derhost-server:8000</code>, runs read-only with a 64 MB <code>/tmp</code>, and is limited to 256 MB of
+memory. Store the service configuration through the server's configuration store as in step 3. The <code>make stack-up
+C=all</code> target starts only the server today; agent containers are started with their own compose files.</p>
 <h2 id="running-as-services">Running as services</h2>
 <p>For an unattended deployment, run each process under systemd. A unit for the server:</p>
 <pre><code class="language-ini"># /etc/systemd/system/aems-server.service

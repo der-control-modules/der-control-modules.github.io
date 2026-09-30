@@ -1003,9 +1003,12 @@
 <p>The MQTT Protocol Proxy connects the <a href="../message-bus-adapter/">Message Bus Adapter</a> to an MQTT broker. MQTT (Message
 Queuing Telemetry Transport) is one of the transports commonly used by OpenFMB deployments, so this proxy is the usual
 route for exchanging data with OpenFMB devices and applications; see <a href="../openfmb/">OpenFMB Integration</a>.</p>
-<p>The proxy is implemented in the <code>protocol-proxy-mqtt</code> Python package on top of the <code>protocol-proxy</code> library and the
-<a href="https://pypi.org/project/paho-mqtt/">paho-mqtt</a> client. It runs as a separate process that is launched and supervised
-by the Message Bus Adapter's proxy manager, so a fault in the broker connection cannot take down the VOLTTRON agent.</p>
+<p>The proxy is implemented in the <code>protocol-proxy-mqtt</code> Python package on top of the <code>protocol-proxy</code> library
+(version 2.0.0rc2 or later) and the <a href="https://pypi.org/project/paho-mqtt/">paho-mqtt</a> client. It runs as a separate
+process that is launched and supervised by the Message Bus Adapter's proxy manager, so a fault in the broker
+connection cannot take down the agent. The manager starts the process through the generic launcher,
+<code>python -m protocol_proxy.proxy --gevent &lt;module&gt;:&lt;class&gt;</code>, which applies gevent monkey-patching before the proxy
+module is imported; the proxy module itself is no longer runnable directly.</p>
 <h2 id="behavior">Behavior</h2>
 <ul>
 <li>On start-up the proxy connects to the configured broker and registers itself with the adapter.</li>
@@ -1065,6 +1068,48 @@ by the Message Bus Adapter's proxy manager, so a fault in the broker connection 
 <td>integer</td>
 <td><code>0</code></td>
 <td>Local port to bind the client to. <code>0</code> lets the operating system choose.</td>
+</tr>
+<tr>
+<td><code>client_id</code></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+<td>MQTT client identifier; generated when omitted.</td>
+</tr>
+<tr>
+<td><code>username</code>, <code>password</code></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+<td>Broker credentials.</td>
+</tr>
+<tr>
+<td><code>tls</code></td>
+<td>false</td>
+<td>object</td>
+<td></td>
+<td>TLS settings passed to the paho-mqtt client.</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+<td><code>MQTTv31</code>, <code>MQTTv311</code>, or <code>MQTTv5</code>.</td>
+</tr>
+<tr>
+<td><code>qos</code></td>
+<td>false</td>
+<td>integer</td>
+<td></td>
+<td>Quality of service level for subscriptions and publications.</td>
+</tr>
+<tr>
+<td><code>reconnect_min_delay</code>, <code>reconnect_max_delay</code></td>
+<td>false</td>
+<td>integer</td>
+<td></td>
+<td>Bounds, in seconds, of the reconnect back-off.</td>
 </tr>
 </tbody>
 </table>
