@@ -1218,9 +1218,12 @@ documentation is served at <code>http://&lt;host&gt;:&lt;port&gt;/docs</code>.</
 </tbody>
 </table>
 <p>Agents subscribed to a configuration through <code>vip.config.subscribe</code> are notified when it is stored, updated, or
-deleted, so configurations can be changed at runtime without restarting the agent. An identity may hold one
-connection at a time: a second connection attempt with an already-connected identity is refused and does not
-disturb the existing agent.</p>
+deleted, so configurations can be changed at runtime without restarting the agent.</p>
+<p>An identity may hold one connection at a time: a second connection attempt with an already-connected identity is
+refused with HTTP <code>409</code> and does not disturb the existing agent. The server sends WebSocket keepalive pings every
+10 seconds with a 10-second timeout, so a dropped agent is detected and its identity freed without waiting for an
+RPC to fail. Each connection may have at most 128 RPCs in flight; further RPCs are rejected with an error asking the
+caller to retry, and a pending RPC never blocks an agent from reconnecting after a restart.</p>
 <h2 id="running-an-agent">Running an agent</h2>
 <p>An agent is a Python class derived from <code>derhost.client.agent.Agent</code>. The <code>run_agent</code> helper turns it into a command
 line program that connects to the server:</p>

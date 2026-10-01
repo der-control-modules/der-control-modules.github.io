@@ -1088,9 +1088,9 @@ broker. Messages then flow in both directions:</p>
 </ul>
 <p>Because all topic resolution and payload transformation is delegated to the Interoperability Service, the adapter
 needs no protocol-specific mapping logic of its own. The service's
-<a href="../interoperability-service/#bundled-transforms">bundled transforms</a> between IEC 61850, IEEE 1815.2, and SunSpec
-are available immediately; adding a mapping or transform to the service is sufficient to expose a new resource
-across the bus boundary.</p>
+<a href="../interoperability-service/#bundled-transforms">bundled transforms</a> among IEC 61850, IEEE 1815.2, IEEE 2030.5,
+IEEE 1547.1, SunSpec, and OpenFMB are available immediately; adding a mapping or transform to the service is
+sufficient to expose a new resource across the bus boundary.</p>
 <h2 id="interface">Interface</h2>
 <p>The adapter runs with the VIP identity <code>platform.bus_adapter</code> and exports the following RPC methods for local agents:</p>
 <table>
@@ -1102,26 +1102,30 @@ across the bus boundary.</p>
 </thead>
 <tbody>
 <tr>
+<td><code>list_remotes()</code></td>
+<td>Returns the <code>unique_remote_id</code> of every configured remote bus.</td>
+</tr>
+<tr>
 <td><code>subscribe(unique_remote_id, topics)</code></td>
 <td>Instructs the proxy identified by <code>unique_remote_id</code> to subscribe to the given topics (or subjects) on the remote bus. Messages received on those topics are relayed to the local bus as described above.</td>
 </tr>
 <tr>
 <td><code>publish(unique_remote_id, topic, payload)</code></td>
-<td>Publishes a payload to a topic on the remote bus through the identified proxy.</td>
+<td>Publishes a JSON-serializable payload to a topic on the remote bus through the identified proxy.</td>
 </tr>
 </tbody>
 </table>
+<p>A <code>unique_remote_id</code> is <code>[bus_type, name]</code> when the adapter entry has a <code>name</code>, otherwise <code>[bus_type, host, port]</code>
+for MQTT and <code>[bus_type, servers]</code> for NATS. Only remotes present in the configuration can be addressed.</p>
 <h2 id="configuration">Configuration</h2>
 <p>The adapter is configured with a JSON document specifying the bus type and a list of remote bus connections. For an
 MQTT bus:</p>
 <pre><code class="language-json">{
   "bus_type": "mqtt",
+  "proxy_registration_timeout": 30,
   "adapters": [
-    {
-      "host": "broker.example.org",
-      "port": 1883,
-      "keepalive": 60
-    }
+    {"name": "site_broker", "host": "broker.example.org", "port": 1883},
+    {"host": "10.0.0.5", "port": 8883, "keepalive": 30}
   ]
 }
 </code></pre>
@@ -1131,6 +1135,7 @@ MQTT bus:</p>
 <th>Parameter</th>
 <th>Required</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -1139,16 +1144,34 @@ MQTT bus:</p>
 <td><code>bus_type</code></td>
 <td>true</td>
 <td>string</td>
-<td>Type of the foreign bus. Currently <code>mqtt</code> or <code>nats</code>. Selects the protocol proxy implementation.</td>
+<td></td>
+<td>Type of the foreign bus, <code>mqtt</code> or <code>nats</code>. Resolved to the plugin <code>protocol_proxy.protocol.&lt;bus_type&gt;</code>.</td>
 </tr>
 <tr>
 <td><code>adapters</code></td>
 <td>true</td>
 <td>list</td>
-<td>One entry per remote broker. The accepted fields depend on <code>bus_type</code>; see <a href="../mqtt/">MQTT</a> and <a href="../nats/">NATS</a>.</td>
+<td></td>
+<td>One entry per remote broker. Every field except <code>name</code> is passed to the proxy process as a command line argument, so the fields must match the proxy's parameters; see <a href="../mqtt/">MQTT</a> and <a href="../nats/">NATS</a>. Fields left unset are not sent, so the proxy's own defaults apply.</td>
+</tr>
+<tr>
+<td><code>adapters[].name</code></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+<td>Optional handle used to form the <code>unique_remote_id</code>.</td>
+</tr>
+<tr>
+<td><code>proxy_registration_timeout</code></td>
+<td>false</td>
+<td>number</td>
+<td><code>30</code></td>
+<td>Seconds to wait for a newly launched proxy process to register with the adapter.</td>
 </tr>
 </tbody>
 </table>
+<p>A proxy is launched for every configured adapter when the configuration is loaded, and the adapter stays idle with a
+warning until a <code>bus_type</code> is configured. Changing <code>bus_type</code> at runtime is not supported; restart the agent instead.</p>
 <p>Store the configuration in the VOLTTRON configuration store:</p>
 <pre><code class="language-shell">vctl config store platform.bus_adapter config path/to/config.json
 </code></pre>
@@ -1156,7 +1179,7 @@ MQTT bus:</p>
 <ul>
 <li>Python &gt;= 3.10</li>
 <li>Modular Eclipse VOLTTRON (<code>volttron-core</code> &gt;= 2.0)</li>
-<li><code>protocol-proxy</code> &gt;= 2.0 and at least one protocol proxy implementation (<a href="../mqtt/">MQTT</a> or <a href="../nats/">NATS</a>)</li>
+<li><code>protocol-proxy</code> &gt;= 2.0.0rc1 and at least one protocol proxy implementation (<a href="../mqtt/">MQTT</a> or <a href="../nats/">NATS</a>)</li>
 <li>A running <a href="../interoperability-service/">Interoperability Service</a> for topic resolution and payload transformation</li>
 </ul>
 <h2 id="installation">Installation</h2>

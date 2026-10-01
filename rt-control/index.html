@@ -1398,7 +1398,9 @@ the native protocol of each device. This enables coordinated actuation of multip
 MESA control modes, PNNL-developed control functions, and user-defined control algorithms, with both scheduling and
 real-time control.</p>
 <h2 id="installation">Installation</h2>
-<p>Before installing, VOLTTRON should be installed and running and its virtual environment should be active.</p>
+<p>Before installing, VOLTTRON should be installed and running and its virtual environment should be active. The
+control modes also import on hosts without a VOLTTRON distribution, such as the
+<a href="../der-control-fastlib/">der-control-fastlib runtime</a>, where the compatibility layer supplies the platform imports.</p>
 <pre><code class="language-shell">git clone https://github.com/der-control-modules/realtime-control-agent
 vctl install ./realtime-control-agent --vip-identity der.rtcontrol --tag rtcontrol --start
 vctl config store der.rtcontrol config path/to/config.json
