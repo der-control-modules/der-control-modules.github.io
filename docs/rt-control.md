@@ -127,7 +127,9 @@ real-time control.
 
 ## Installation
 
-Before installing, VOLTTRON should be installed and running and its virtual environment should be active.
+Before installing, VOLTTRON should be installed and running and its virtual environment should be active. The
+control modes also import on hosts without a VOLTTRON distribution, such as the
+[der-control-fastlib runtime](der-control-fastlib.md), where the compatibility layer supplies the platform imports.
 
 ```shell
 git clone https://github.com/der-control-modules/realtime-control-agent

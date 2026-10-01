@@ -78,9 +78,13 @@ documentation is served at `http://<host>:<port>/docs`.
 | `GET /version`                                       | Server version.                                                                             |
 
 Agents subscribed to a configuration through `vip.config.subscribe` are notified when it is stored, updated, or
-deleted, so configurations can be changed at runtime without restarting the agent. An identity may hold one
-connection at a time: a second connection attempt with an already-connected identity is refused and does not
-disturb the existing agent.
+deleted, so configurations can be changed at runtime without restarting the agent.
+
+An identity may hold one connection at a time: a second connection attempt with an already-connected identity is
+refused with HTTP `409` and does not disturb the existing agent. The server sends WebSocket keepalive pings every
+10 seconds with a 10-second timeout, so a dropped agent is detected and its identity freed without waiting for an
+RPC to fail. Each connection may have at most 128 RPCs in flight; further RPCs are rejected with an error asking the
+caller to retry, and a pending RPC never blocks an agent from reconnecting after a restart.
 
 ## Running an agent
 
